@@ -3,7 +3,7 @@
  * @brief Comprehensive unit tests for the Parser state machine.
  */
 
-#include "parser.h"
+#include "../parser.h"
 #include <cassert>
 #include <iostream>
 #include <fstream>

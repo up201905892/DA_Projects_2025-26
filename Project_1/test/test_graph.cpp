@@ -10,8 +10,8 @@
  *   14:    Full integration test (Parser → Solver)
  */
 
-#include "parser.h"
-#include "graph.h"
+#include "../parser.h"
+#include "../graph.h"
 #include <cassert>
 #include <iostream>
 #include <fstream>

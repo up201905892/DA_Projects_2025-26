@@ -2,26 +2,14 @@
  * @file main.cpp
  * @brief Entry point for the Scientific Conference Organization Tool.
  *
- * Supports two execution modes as specified in the project description:
+ * Supports two execution modes:
  *
- * 1. **Interactive mode** (default): Presents a command-line menu that
- *    exposes all implemented functionalities.
+ * 1. Interactive mode (default): Presents a command-line menu.
+ * 2. Batch mode (-b): ./myProg -b input.csv output.csv
  *
- * 2. **Batch mode** (`-b` flag): Reads input, solves, and writes output
- *    non-interactively. Invoked as:
- *    @code
- *      ./myProg -b input.csv [risk.csv]
- *    @endcode
- *
- * @par Implemented tasks:
- * - T1.1: Menu interface + batch mode
- * - T1.2: Input parsing and data inspection
- * - T2.1: Basic assignment (primary domains, no risk)
- * - T2.2: Risk analysis K=1
- *
- * @author DA 2026 - Programming Project I
- * @date Spring 2026
- * @version 1.0
+ * Interactive conventions used in this project:
+ * - Input test files are assumed to be in:  dataset/input/
+ * - Output files are written to:            dataset/output/
  */
 
 #include "parser.h"
@@ -31,41 +19,76 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <fstream>
+#include <limits>
+
+// ============================================================================
+// Helper functions
+// ============================================================================
+
+std::string buildInputPath(const std::string& filename) {
+    return "dataset/input/" + filename;
+}
+
+std::string extractFileName(const std::string& path) {
+    size_t pos1 = path.find_last_of('/');
+    size_t pos2 = path.find_last_of('\\');
+    size_t pos;
+
+    if (pos1 == std::string::npos && pos2 == std::string::npos) {
+        return path;
+    } else if (pos1 == std::string::npos) {
+        pos = pos2;
+    } else if (pos2 == std::string::npos) {
+        pos = pos1;
+    } else {
+        pos = std::max(pos1, pos2);
+    }
+
+    return path.substr(pos + 1);
+}
+
+std::string buildInteractiveOutputPath(const std::string& configuredName) {
+    return "dataset/output/" + extractFileName(configuredName);
+}
+
+bool fileExistsReadable(const std::string& path) {
+    std::ifstream f(path.c_str());
+    return f.good();
+}
+
+bool readInt(int& value) {
+    if (std::cin >> value) return true;
+
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    return false;
+}
 
 // ============================================================================
 // Batch mode
 // ============================================================================
 
-/**
- * @brief Executes the tool in batch mode (non-interactive).
- *
- * Usage: ./myProg -b input.csv output.csv
- *
- * All output — assignments AND risk analysis (if configured) — is written
- * to a single @p outputFile.  The filename stored in the CSV's OutputFileName
- * parameter is ignored in batch mode; the command-line argument takes precedence.
- *
- * @param inputFile   Path to the input CSV file.
- * @param outputFile  Path to the (unified) output file.
- * @return 0 on success, 1 on error.
- */
 int runBatch(const std::string& inputFile, const std::string& outputFile) {
     try {
         Parser parser;
         ProblemData data = parser.parse(inputFile);
 
         SolverResult result;
-
         if (data.config.shouldAnalyzeRisk()) {
             result = Solver::solveWithRiskAnalysis(data);
         } else {
             result = Solver::solve(data);
         }
 
-        // Single unified output: assignments first, then risk (if configured).
-        // writeToFile appends the risk section when includeRisk=true (the default).
-        OutputWriter::writeToFile(outputFile, result, data);
+        std::ofstream test(outputFile.c_str());
+        if (!test.is_open()) {
+            std::cerr << "ERROR: Cannot open output file: " << outputFile << std::endl;
+            return 1;
+        }
+        test.close();
 
+        OutputWriter::writeToFile(outputFile, result, data);
         return 0;
 
     } catch (const ParseError& e) {
@@ -81,9 +104,6 @@ int runBatch(const std::string& inputFile, const std::string& outputFile) {
 // Interactive mode
 // ============================================================================
 
-/**
- * @brief Displays the interactive menu.
- */
 void showMenu() {
     std::cout << "\n========================================\n";
     std::cout << "  Conference Review Assignment Tool\n";
@@ -101,21 +121,10 @@ void showMenu() {
     std::cout << "  Choice: ";
 }
 
-/**
- * @brief Runs the tool in interactive mode with a command-line menu.
- *
- * If @p preloadedFile is non-empty the file is parsed immediately and a
- * summary is printed before the menu loop begins, giving the user instant
- * feedback that the data was loaded successfully.
- *
- * @param preloadedFile Optional path to pre-load before entering the menu.
- * @return 0 on normal exit.
- */
 int runInteractive(const std::string& preloadedFile = "") {
     std::unique_ptr<ProblemData> data;
     std::unique_ptr<SolverResult> lastResult;
 
-    // --- Pre-load file if one was provided on the command line ---
     if (!preloadedFile.empty()) {
         try {
             Parser parser;
@@ -132,24 +141,29 @@ int runInteractive(const std::string& preloadedFile = "") {
     while (choice != 0) {
         showMenu();
 
-        if (!(std::cin >> choice)) {
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
+        if (!readInt(choice)) {
             std::cout << "  Invalid input. Enter a number.\n";
             continue;
         }
 
         switch (choice) {
         case 1: {
-            // --- Load input file ---
-            std::cout << "  Enter input file path: ";
+            std::cout << "  Enter input filename (inside dataset/input/): ";
             std::string filename;
             std::cin >> filename;
+
+            std::string fullPath = buildInputPath(filename);
+
+            if (!fileExistsReadable(fullPath)) {
+                std::cerr << "  ERROR: Cannot open input file: " << fullPath << std::endl;
+                break;
+            }
+
             try {
                 Parser parser;
-                data = std::make_unique<ProblemData>(parser.parse(filename));
+                data = std::make_unique<ProblemData>(parser.parse(fullPath));
                 lastResult.reset();
-                std::cout << "  File loaded successfully.\n";
+                std::cout << "  File loaded successfully: " << fullPath << "\n";
                 OutputWriter::printSummary(*data);
             } catch (const std::exception& e) {
                 std::cerr << "  ERROR: " << e.what() << std::endl;
@@ -159,7 +173,6 @@ int runInteractive(const std::string& preloadedFile = "") {
         }
 
         case 2: {
-            // --- Problem summary ---
             if (!data) {
                 std::cout << "  No data loaded. Use option 1 first.\n";
                 break;
@@ -169,7 +182,6 @@ int runInteractive(const std::string& preloadedFile = "") {
         }
 
         case 3: {
-            // --- List submissions ---
             if (!data) {
                 std::cout << "  No data loaded. Use option 1 first.\n";
                 break;
@@ -179,7 +191,6 @@ int runInteractive(const std::string& preloadedFile = "") {
         }
 
         case 4: {
-            // --- List reviewers ---
             if (!data) {
                 std::cout << "  No data loaded. Use option 1 first.\n";
                 break;
@@ -189,7 +200,6 @@ int runInteractive(const std::string& preloadedFile = "") {
         }
 
         case 5: {
-            // --- Run assignment (T2.1) ---
             if (!data) {
                 std::cout << "  No data loaded. Use option 1 first.\n";
                 break;
@@ -212,34 +222,34 @@ int runInteractive(const std::string& preloadedFile = "") {
                           << " submissions under-reviewed)\n";
             }
 
-            // Write to file if reporting is enabled
             if (data->config.shouldReport()) {
-                OutputWriter::writeToFile(data->config.outputFileName,
-                                          *lastResult, *data);
+                std::string outputPath = buildInteractiveOutputPath(data->config.outputFileName);
+                OutputWriter::writeToFile(outputPath, *lastResult, *data);
             }
 
-            // Print to console
             OutputWriter::printToConsole(*lastResult, *data);
             break;
         }
 
         case 6: {
-            // --- Run with Risk Analysis (T2.2) ---
             if (!data) {
                 std::cout << "  No data loaded. Use option 1 first.\n";
                 break;
             }
 
-            int riskK;
             std::cout << "  Enter risk parameter K (1 for single reviewer): ";
-            std::cin >> riskK;
+            int riskK;
+            if (!readInt(riskK)) {
+                std::cout << "  Invalid input. K must be an integer.\n";
+                break;
+            }
+
             if (riskK < 1) {
                 std::cout << "  Invalid K. Must be >= 1.\n";
                 break;
             }
 
-            // Temporarily set risk parameter
-            int origRisk = data->config.riskAnalysis;
+            int originalRisk = data->config.riskAnalysis;
             data->config.riskAnalysis = riskK;
 
             std::cout << "  Running Max-Flow with Risk Analysis (K="
@@ -249,7 +259,6 @@ int runInteractive(const std::string& preloadedFile = "") {
                 lastResult = std::make_unique<SolverResult>(
                     Solver::solveWithRiskAnalysis(*data));
             } else {
-                // K > 1: run base assignment, risk K>1 not yet implemented
                 std::cout << "  Note: Risk K > 1 analysis is outlined but not "
                           << "fully implemented (T2.3).\n";
                 lastResult = std::make_unique<SolverResult>(Solver::solve(*data));
@@ -264,7 +273,7 @@ int runInteractive(const std::string& preloadedFile = "") {
             if (!lastResult->riskyReviewers.empty()) {
                 std::cout << "  Risky reviewers (" << lastResult->riskyReviewers.size()
                           << "): ";
-                for (size_t i = 0; i < lastResult->riskyReviewers.size(); i++) {
+                for (size_t i = 0; i < lastResult->riskyReviewers.size(); ++i) {
                     if (i > 0) std::cout << ", ";
                     std::cout << lastResult->riskyReviewers[i];
                 }
@@ -273,20 +282,18 @@ int runInteractive(const std::string& preloadedFile = "") {
                 std::cout << "  No risky reviewers found (assignment is robust).\n";
             }
 
-            // Write outputs
             if (data->config.shouldReport()) {
-                OutputWriter::writeToFile(data->config.outputFileName,
-                                          *lastResult, *data);
+                std::string outputPath = buildInteractiveOutputPath(data->config.outputFileName);
+                OutputWriter::writeToFile(outputPath, *lastResult, *data);
             }
+
             OutputWriter::printToConsole(*lastResult, *data);
 
-            // Restore original risk parameter
-            data->config.riskAnalysis = origRisk;
+            data->config.riskAnalysis = originalRisk;
             break;
         }
 
         case 7: {
-            // --- Show last result ---
             if (!lastResult) {
                 std::cout << "  No results yet. Run option 5 or 6 first.\n";
                 break;
@@ -316,32 +323,28 @@ int runInteractive(const std::string& preloadedFile = "") {
 // Main entry point
 // ============================================================================
 
-/**
- * @brief Program entry point.
- *
- * @par Usage:
- * - Interactive:                `./myProg`
- * - Interactive (pre-load):     `./myProg input.csv`
- * - Batch:                      `./myProg -b input.csv output.csv`
- *
- * Batch mode requires **exactly** 4 arguments: the program name, `-b`, the
- * input file, and the output file.  All output (assignments and risk analysis)
- * goes to @c output.csv.
- *
- * @param argc Argument count.
- * @param argv Argument vector.
- * @return 0 on success, 1 on error.
- */
 int main(int argc, char* argv[]) {
-    // --- Batch mode: ./myProg -b input.csv output.csv ---
     if (argc == 4 && std::string(argv[1]) == "-b") {
         return runBatch(argv[2], argv[3]);
     }
 
-    // --- Interactive mode ---
-    // If a single filename argument is provided, pre-load it before the menu.
-    if (argc == 2 && std::string(argv[1]) != "-b") {
+    if (argc >= 2 && std::string(argv[1]) == "-b") {
+        std::cerr << "ERROR: Invalid batch mode usage.\n";
+        std::cerr << "Usage: ./myProg -b input.csv output.csv\n";
+        return 1;
+    }
+
+    if (argc == 2) {
         return runInteractive(argv[1]);
+    }
+
+    if (argc > 2) {
+        std::cerr << "ERROR: Invalid usage.\n";
+        std::cerr << "Usage:\n";
+        std::cerr << "  ./myProg\n";
+        std::cerr << "  ./myProg input.csv\n";
+        std::cerr << "  ./myProg -b input.csv output.csv\n";
+        return 1;
     }
 
     return runInteractive();

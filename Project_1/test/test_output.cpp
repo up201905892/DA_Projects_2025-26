@@ -3,9 +3,9 @@
  * @brief End-to-end tests for the OutputWriter + complete pipeline.
  */
 
-#include "parser.h"
-#include "graph.h"
-#include "output.h"
+#include "../parser.h"
+#include "../graph.h"
+#include "../output.h"
 #include <cassert>
 #include <iostream>
 #include <fstream>
