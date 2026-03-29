@@ -39,13 +39,17 @@
 /**
  * @brief Executes the tool in batch mode (non-interactive).
  *
- * Usage: ./myProg -b input.csv [risk.csv]
+ * Usage: ./myProg -b input.csv output.csv
  *
- * @param inputFile  Path to the input CSV file.
- * @param riskFile   Path to the risk analysis output file (optional).
+ * All output — assignments AND risk analysis (if configured) — is written
+ * to a single @p outputFile.  The filename stored in the CSV's OutputFileName
+ * parameter is ignored in batch mode; the command-line argument takes precedence.
+ *
+ * @param inputFile   Path to the input CSV file.
+ * @param outputFile  Path to the (unified) output file.
  * @return 0 on success, 1 on error.
  */
-int runBatch(const std::string& inputFile, const std::string& riskFile) {
+int runBatch(const std::string& inputFile, const std::string& outputFile) {
     try {
         Parser parser;
         ProblemData data = parser.parse(inputFile);
@@ -58,17 +62,9 @@ int runBatch(const std::string& inputFile, const std::string& riskFile) {
             result = Solver::solve(data);
         }
 
-        // Write assignment output
-        if (data.config.shouldReport()) {
-            OutputWriter::writeToFile(data.config.outputFileName, result, data);
-        }
-
-        // Write risk analysis output to the dedicated risk file (argv[3]) if provided.
-        // IMPORTANT: the normal assignment output already went to data.config.outputFileName
-        // above; argv[3] is EXCLUSIVELY for risk analysis output.
-        if (data.config.shouldAnalyzeRisk() && !riskFile.empty()) {
-            OutputWriter::writeRiskToFile(riskFile, result, data.config.riskAnalysis);
-        }
+        // Single unified output: assignments first, then risk (if configured).
+        // writeToFile appends the risk section when includeRisk=true (the default).
+        OutputWriter::writeToFile(outputFile, result, data);
 
         return 0;
 
@@ -324,25 +320,26 @@ int runInteractive(const std::string& preloadedFile = "") {
  * @brief Program entry point.
  *
  * @par Usage:
- * - Interactive: `./myProg`
- * - Interactive with preloaded file: `./myProg input.csv`
- * - Batch: `./myProg -b input.csv [risk.csv]`
+ * - Interactive:                `./myProg`
+ * - Interactive (pre-load):     `./myProg input.csv`
+ * - Batch:                      `./myProg -b input.csv output.csv`
+ *
+ * Batch mode requires **exactly** 4 arguments: the program name, `-b`, the
+ * input file, and the output file.  All output (assignments and risk analysis)
+ * goes to @c output.csv.
  *
  * @param argc Argument count.
  * @param argv Argument vector.
  * @return 0 on success, 1 on error.
  */
 int main(int argc, char* argv[]) {
-    // --- Batch mode: ./myProg -b input.csv [risk.csv] ---
-    if (argc >= 3 && std::string(argv[1]) == "-b") {
-        std::string inputFile = argv[2];
-        std::string riskFile  = (argc >= 4) ? argv[3] : "";
-        return runBatch(inputFile, riskFile);
+    // --- Batch mode: ./myProg -b input.csv output.csv ---
+    if (argc == 4 && std::string(argv[1]) == "-b") {
+        return runBatch(argv[2], argv[3]);
     }
 
     // --- Interactive mode ---
-    // If a filename is provided as single argument, pass it to runInteractive
-    // so it pre-loads the data and prints a summary before the menu loop.
+    // If a single filename argument is provided, pre-load it before the menu.
     if (argc == 2 && std::string(argv[1]) != "-b") {
         return runInteractive(argv[1]);
     }

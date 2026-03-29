@@ -206,13 +206,13 @@ void test_output_sorted() {
 
 // ============================================================================
 // TEST 6: Full pipeline batch simulation
+// Mirrors the new batch mode: ./myProg -b input.csv output.csv
+// Assignments AND risk analysis go to the single unified output file.
 // ============================================================================
 void test_full_batch_pipeline() {
-    // Compute platform-correct temp paths for output files
-    std::string batchOut  = tmpPath("batch_test_out.csv");
-    std::string batchRisk = tmpPath("batch_test_risk.csv");
+    // Single unified output file (as per the new batch convention).
+    std::string batchOut = tmpPath("batch_test_out.csv");
 
-    // Create input file (OutputFileName must point to a writable temp path)
     std::string input =
         "#Submissions\n"
         "100, 1\n"
@@ -231,7 +231,7 @@ void test_full_batch_pipeline() {
         "#Control\n"
         "GenerateAssignments, 1\n"
         "RiskAnalysis, 1\n"
-        "OutputFileName, \"" + batchOut + "\"\n";
+        "OutputFileName, \"dummy_ignored_in_batch.csv\"\n";
 
     auto inPath = writeTempFile(input, "batch_pipeline.csv");
     Parser parser;
@@ -239,23 +239,22 @@ void test_full_batch_pipeline() {
 
     SolverResult result = Solver::solveWithRiskAnalysis(data);
 
-    // All 3 subs should be assigned
+    // All 3 subs should be assigned.
     assert(result.maxFlow == 3);
     assert(result.assignments.size() == 3);
     assert(result.unfulfilled.empty());
 
-    // Write outputs
+    // Unified write: assignments + risk in one file (includeRisk=true by default).
     OutputWriter::writeToFile(batchOut, result, data);
-    OutputWriter::writeRiskToFile(batchRisk, result, 1);
 
-    // Verify files exist and have content
-    std::string assignOut = readFile(batchOut);
-    std::string riskOut = readFile(batchRisk);
+    std::string output = readFile(batchOut);
 
-    assert(!assignOut.empty());
-    assert(assignOut.find("#Total: 3") != std::string::npos);
-    assert(!riskOut.empty());
-    assert(riskOut.find("#Risk Analysis: 1") != std::string::npos);
+    // Assignment section must be present.
+    assert(!output.empty());
+    assert(output.find("#Total: 3") != std::string::npos);
+
+    // Risk section must also be in the same file.
+    assert(output.find("#Risk Analysis: 1") != std::string::npos);
 
     std::cout << "  [PASS] test_full_batch_pipeline" << std::endl;
 }

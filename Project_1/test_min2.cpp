@@ -1,6 +1,7 @@
 #include "parser.h"
 #include <iostream>
 #include <cstdlib>
+
 int main() {
     const char* t = std::getenv("TEMP");
     std::string dir = t ? std::string(t) + "/" : "./";

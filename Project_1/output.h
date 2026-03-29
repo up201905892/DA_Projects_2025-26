@@ -41,11 +41,16 @@ public:
      *
      * Generates the output file in the format specified by the project PDF.
      * Includes assignment tables (by submission and by reviewer), totals,
-     * unfulfilled submissions, and risk analysis results.
+     * unfulfilled submissions, and — when @p includeRisk is true and risk
+     * analysis was configured — the risk analysis section as well.
      *
-     * @param filename   Path to the output file.
-     * @param result     The solver result to format.
-     * @param data       The problem data (for config access).
+     * @param filename    Path to the output file.
+     * @param result      The solver result to format.
+     * @param data        The problem data (for config access).
+     * @param includeRisk If true (default) and risk is configured, appends the
+     *                    risk section to the same file.  Pass false when the
+     *                    caller intends to write risk to a separate file
+     *                    (batch mode with an explicit risk output path).
      *
      * @par Complexity
      * \f$O(A \log A + U \log U + R \log R)\f$ where A = assignments,
@@ -53,7 +58,8 @@ public:
      */
     static void writeToFile(const std::string& filename,
                             const SolverResult& result,
-                            const ProblemData& data) {
+                            const ProblemData& data,
+                            bool includeRisk = true) {
         std::ofstream file(filename);
         if (!file.is_open()) {
             std::cerr << "Error: Cannot open output file: " << filename << std::endl;
@@ -61,6 +67,12 @@ public:
         }
 
         writeAssignmentSection(file, result, data);
+
+        if (includeRisk && data.config.shouldAnalyzeRisk()) {
+            file << "\n";
+            writeRiskSection(file, result, data.config.riskAnalysis);
+        }
+
         file.close();
 
         std::cout << "Output written to: " << filename << std::endl;
@@ -148,14 +160,17 @@ public:
     }
 
     /**
-     * @brief Lists all submissions with their domains.
+     * @brief Lists all submissions with their domains (and title/authors/email if available).
      * @param data The parsed problem data.
      */
     static void listSubmissions(const ProblemData& data) {
         std::cout << "\n--- Submissions (" << data.numSubmissions() << ") ---\n";
         for (const auto& s : data.submissions) {
-            std::cout << "  ID=" << s.id
-                      << "  Primary=" << s.primaryDomain;
+            std::cout << "  ID=" << s.id;
+            if (!s.title.empty())   std::cout << "  Title=\""   << s.title   << "\"";
+            if (!s.authors.empty()) std::cout << "  Authors=\"" << s.authors << "\"";
+            if (!s.email.empty())   std::cout << "  Email="     << s.email;
+            std::cout << "  Primary=" << s.primaryDomain;
             if (s.secondaryDomain.has_value()) {
                 std::cout << "  Secondary=" << s.secondaryDomain.value();
             }
@@ -165,14 +180,16 @@ public:
     }
 
     /**
-     * @brief Lists all reviewers with their expertise.
+     * @brief Lists all reviewers with their expertise (and name/email if available).
      * @param data The parsed problem data.
      */
     static void listReviewers(const ProblemData& data) {
         std::cout << "\n--- Reviewers (" << data.numReviewers() << ") ---\n";
         for (const auto& r : data.reviewers) {
-            std::cout << "  ID=" << r.id
-                      << "  Primary=" << r.primaryExpertise;
+            std::cout << "  ID=" << r.id;
+            if (!r.name.empty())  std::cout << "  Name=\"" << r.name  << "\"";
+            if (!r.email.empty()) std::cout << "  Email="  << r.email;
+            std::cout << "  Primary=" << r.primaryExpertise;
             if (r.secondaryExpertise.has_value()) {
                 std::cout << "  Secondary=" << r.secondaryExpertise.value();
             }

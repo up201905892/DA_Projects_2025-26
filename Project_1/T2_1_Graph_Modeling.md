@@ -6,7 +6,9 @@
 
 Dados:
 - Conjunto de submissões $S = \{s_1, s_2, \dots, s_n\}$, cada uma com um domínio primário $d(s_i) \in \mathcal{D}$
+  *(cada submissão contém também dados bibliográficos: **Título**, **Autores** e **E-mail** de contacto, conforme a especificação do projeto — estes campos são armazenados na struct `Submission` mas não afetam a modelagem do grafo)*
 - Conjunto de revisores $R = \{r_1, r_2, \dots, r_m\}$, cada um com expertise primária $e(r_j) \in \mathcal{D}$
+  *(cada revisor contém também **Nome** e **E-mail**, armazenados na struct `Reviewer` — igualmente sem influência na topologia do grafo)*
 - Parâmetro $\text{MinRev}$ = número mínimo de revisões por submissão
 - Parâmetro $\text{MaxRev}$ = número máximo de revisões por revisor
 
