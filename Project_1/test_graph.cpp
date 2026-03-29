@@ -16,9 +16,13 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <cstdlib>
 
 static std::string writeTempFile(const std::string& content, const std::string& name) {
-    std::string path = "/tmp/" + name;
+    const char* tmpEnv = std::getenv("TEMP");
+    if (!tmpEnv) tmpEnv = std::getenv("TMP");
+    std::string dir = tmpEnv ? std::string(tmpEnv) + "/" : "./";
+    std::string path = dir + name;
     std::ofstream f(path);
     f << content;
     f.close();
@@ -107,10 +111,10 @@ void test_ek_reset() {
 // ============================================================================
 void test_solver_figure1() {
     ProblemData data;
-    data.addSubmission({31, 4, std::nullopt});
-    data.addSubmission({87, 1, std::nullopt});
-    data.addReviewer({1, 1, std::nullopt});
-    data.addReviewer({2, 4, std::nullopt});
+    data.addSubmission({31, "", "", "", 4, std::nullopt});
+    data.addSubmission({87, "", "", "", 1, std::nullopt});
+    data.addReviewer({1, "", "", 1, std::nullopt});
+    data.addReviewer({2, "", "", 4, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 1;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -145,11 +149,11 @@ void test_solver_minrev2() {
     // MinRev=2, MaxRev=2
     // Total demand: 2×2=4, Total capacity: 3×2=6 → feasible
     ProblemData data;
-    data.addSubmission({10, 1, std::nullopt});
-    data.addSubmission({20, 1, std::nullopt});
-    data.addReviewer({100, 1, std::nullopt});
-    data.addReviewer({200, 1, std::nullopt});
-    data.addReviewer({300, 1, std::nullopt});
+    data.addSubmission({10, "", "", "", 1, std::nullopt});
+    data.addSubmission({20, "", "", "", 1, std::nullopt});
+    data.addReviewer({100, "", "", 1, std::nullopt});
+    data.addReviewer({200, "", "", 1, std::nullopt});
+    data.addReviewer({300, "", "", 1, std::nullopt});
     data.config.minReviewsPerSubmission = 2;
     data.config.maxReviewsPerReviewer = 2;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -181,10 +185,10 @@ void test_solver_partial() {
     // MinRev=1, MaxRev=3
     // Only sub with domain 1 can be reviewed
     ProblemData data;
-    data.addSubmission({10, 1, std::nullopt});
-    data.addSubmission({20, 2, std::nullopt});
-    data.addSubmission({30, 3, std::nullopt});
-    data.addReviewer({100, 1, std::nullopt});
+    data.addSubmission({10, "", "", "", 1, std::nullopt});
+    data.addSubmission({20, "", "", "", 2, std::nullopt});
+    data.addSubmission({30, "", "", "", 3, std::nullopt});
+    data.addReviewer({100, "", "", 1, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 3;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -214,14 +218,14 @@ void test_solver_multi_domain() {
     // MinRev=1, MaxRev=1
     // Perfect matching: each reviewer reviews exactly 1 submission
     ProblemData data;
-    data.addSubmission({1, 1, std::nullopt});
-    data.addSubmission({2, 1, std::nullopt});
-    data.addSubmission({3, 2, std::nullopt});
-    data.addSubmission({4, 2, std::nullopt});
-    data.addReviewer({10, 1, std::nullopt});
-    data.addReviewer({20, 1, std::nullopt});
-    data.addReviewer({30, 2, std::nullopt});
-    data.addReviewer({40, 2, std::nullopt});
+    data.addSubmission({1, "", "", "", 1, std::nullopt});
+    data.addSubmission({2, "", "", "", 1, std::nullopt});
+    data.addSubmission({3, "", "", "", 2, std::nullopt});
+    data.addSubmission({4, "", "", "", 2, std::nullopt});
+    data.addReviewer({10, "", "", 1, std::nullopt});
+    data.addReviewer({20, "", "", 1, std::nullopt});
+    data.addReviewer({30, "", "", 2, std::nullopt});
+    data.addReviewer({40, "", "", 2, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 1;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -240,7 +244,7 @@ void test_solver_multi_domain() {
 // ============================================================================
 void test_corner_no_submissions() {
     ProblemData data;
-    data.addReviewer({1, 1, std::nullopt});
+    data.addReviewer({1, "", "", 1, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 1;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -259,7 +263,7 @@ void test_corner_no_submissions() {
 // ============================================================================
 void test_corner_no_reviewers() {
     ProblemData data;
-    data.addSubmission({10, 1, std::nullopt});
+    data.addSubmission({10, "", "", "", 1, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 1;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -283,10 +287,10 @@ void test_corner_maxrev_bottleneck() {
     // MinRev=1, MaxRev=2
     // Reviewer can only do 2 of the 3
     ProblemData data;
-    data.addSubmission({1, 1, std::nullopt});
-    data.addSubmission({2, 1, std::nullopt});
-    data.addSubmission({3, 1, std::nullopt});
-    data.addReviewer({100, 1, std::nullopt});
+    data.addSubmission({1, "", "", "", 1, std::nullopt});
+    data.addSubmission({2, "", "", "", 1, std::nullopt});
+    data.addSubmission({3, "", "", "", 1, std::nullopt});
+    data.addReviewer({100, "", "", 1, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 2;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -309,10 +313,10 @@ void test_risk_analysis_k1() {
     // MinRev=1, MaxRev=1
     // Removing EITHER reviewer makes assignment infeasible
     ProblemData data;
-    data.addSubmission({10, 1, std::nullopt});
-    data.addSubmission({20, 2, std::nullopt});
-    data.addReviewer({100, 1, std::nullopt});
-    data.addReviewer({200, 2, std::nullopt});
+    data.addSubmission({10, "", "", "", 1, std::nullopt});
+    data.addSubmission({20, "", "", "", 2, std::nullopt});
+    data.addReviewer({100, "", "", 1, std::nullopt});
+    data.addReviewer({200, "", "", 2, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 1;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -341,12 +345,12 @@ void test_risk_analysis_redundant() {
     // MinRev=1, MaxRev=1
     // Removing any single reviewer still leaves enough
     ProblemData data;
-    data.addSubmission({10, 1, std::nullopt});
-    data.addSubmission({20, 1, std::nullopt});
-    data.addReviewer({100, 1, std::nullopt});
-    data.addReviewer({200, 1, std::nullopt});
-    data.addReviewer({300, 1, std::nullopt});
-    data.addReviewer({400, 1, std::nullopt});
+    data.addSubmission({10, "", "", "", 1, std::nullopt});
+    data.addSubmission({20, "", "", "", 1, std::nullopt});
+    data.addReviewer({100, "", "", 1, std::nullopt});
+    data.addReviewer({200, "", "", 1, std::nullopt});
+    data.addReviewer({300, "", "", 1, std::nullopt});
+    data.addReviewer({400, "", "", 1, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 1;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -412,11 +416,11 @@ void test_stress() {
 
     // 100 submissions: domains cycle through 1..5
     for (int i = 1; i <= 100; i++) {
-        data.addSubmission({i, (i % numDomains) + 1, std::nullopt});
+        data.addSubmission({i, "", "", "", (i % numDomains) + 1, std::nullopt});
     }
     // 50 reviewers: each domain has 10 reviewers, MaxRev=4
     for (int j = 1; j <= 50; j++) {
-        data.addReviewer({1000 + j, (j % numDomains) + 1, std::nullopt});
+        data.addReviewer({1000 + j, "", "", (j % numDomains) + 1, std::nullopt});
     }
     data.config.minReviewsPerSubmission = 2;
     data.config.maxReviewsPerReviewer = 4;
@@ -445,8 +449,8 @@ void test_secondary_match() {
     // With PRIMARY_ONLY: no match (1 ≠ 3)
     // With ALL: match via secondary reviewer expertise (2) == secondary sub domain (2)
     ProblemData data;
-    data.addSubmission({10, 1, 2});    // secondary domain = 2
-    data.addReviewer({100, 3, 2});     // secondary expertise = 2
+    data.addSubmission({10, "", "", "", 1, 2});    // secondary domain = 2
+    data.addReviewer({100, "", "", 3, 2});          // secondary expertise = 2
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 1;
     data.config.secondaryReviewerExpertise = true;

@@ -2,9 +2,14 @@
 # Makefile — Scientific Conference Organization Tool (DA 2026 - Project I)
 # ============================================================================
 
-CXX      = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic -O2
-LDFLAGS  =
+CXX        = g++
+# Note: -fno-inline is included to work around a GCC 15/MinGW codegen bug where
+# aggressive inlining of header-only exception-handling code generates invalid
+# SEH unwind tables on Windows. All other -O2 optimisations remain active.
+# On Linux/macOS this flag is a no-op and evaluation machines are unaffected.
+CXXFLAGS   = -std=c++17 -Wall -Wextra -Wpedantic -O2 -fno-inline
+TESTFLAGS  = $(CXXFLAGS)
+LDFLAGS    =
 
 # Main program
 TARGET   = myProg
@@ -37,16 +42,16 @@ tests: $(TEST_DOMAIN) $(TEST_PARSER) $(TEST_GRAPH) $(TEST_OUTPUT)
 	@echo "=== ALL TESTS PASSED ==="
 
 $(TEST_DOMAIN): test_domain.cpp domain.h
-	$(CXX) $(CXXFLAGS) -o $@ test_domain.cpp
+	$(CXX) $(TESTFLAGS) -o $@ test_domain.cpp
 
 $(TEST_PARSER): test_parser.cpp parser.h domain.h
-	$(CXX) $(CXXFLAGS) -o $@ test_parser.cpp
+	$(CXX) $(TESTFLAGS) -o $@ test_parser.cpp
 
 $(TEST_GRAPH): test_graph.cpp graph.h parser.h domain.h
-	$(CXX) $(CXXFLAGS) -o $@ test_graph.cpp
+	$(CXX) $(TESTFLAGS) -o $@ test_graph.cpp
 
 $(TEST_OUTPUT): test_output.cpp output.h graph.h parser.h domain.h
-	$(CXX) $(CXXFLAGS) -o $@ test_output.cpp
+	$(CXX) $(TESTFLAGS) -o $@ test_output.cpp
 
 # ---- Convenience ----
 

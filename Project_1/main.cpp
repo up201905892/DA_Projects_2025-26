@@ -63,14 +63,11 @@ int runBatch(const std::string& inputFile, const std::string& riskFile) {
             OutputWriter::writeToFile(data.config.outputFileName, result, data);
         }
 
-        // Write risk analysis output if requested and filename provided
+        // Write risk analysis output to the dedicated risk file (argv[3]) if provided.
+        // IMPORTANT: the normal assignment output already went to data.config.outputFileName
+        // above; argv[3] is EXCLUSIVELY for risk analysis output.
         if (data.config.shouldAnalyzeRisk() && !riskFile.empty()) {
             OutputWriter::writeRiskToFile(riskFile, result, data.config.riskAnalysis);
-        } else if (data.config.shouldAnalyzeRisk() && riskFile.empty()) {
-            // Print risk to stdout if no file specified
-            std::cout << std::endl;
-            OutputWriter::writeRiskToFile("risk_output.csv", result,
-                                          data.config.riskAnalysis);
         }
 
         return 0;
@@ -111,11 +108,29 @@ void showMenu() {
 /**
  * @brief Runs the tool in interactive mode with a command-line menu.
  *
+ * If @p preloadedFile is non-empty the file is parsed immediately and a
+ * summary is printed before the menu loop begins, giving the user instant
+ * feedback that the data was loaded successfully.
+ *
+ * @param preloadedFile Optional path to pre-load before entering the menu.
  * @return 0 on normal exit.
  */
-int runInteractive() {
+int runInteractive(const std::string& preloadedFile = "") {
     std::unique_ptr<ProblemData> data;
     std::unique_ptr<SolverResult> lastResult;
+
+    // --- Pre-load file if one was provided on the command line ---
+    if (!preloadedFile.empty()) {
+        try {
+            Parser parser;
+            data = std::make_unique<ProblemData>(parser.parse(preloadedFile));
+            std::cout << "  File loaded: " << preloadedFile << "\n";
+            OutputWriter::printSummary(*data);
+        } catch (const std::exception& e) {
+            std::cerr << "  ERROR loading file: " << e.what() << std::endl;
+            data.reset();
+        }
+    }
 
     int choice = -1;
     while (choice != 0) {
@@ -326,10 +341,10 @@ int main(int argc, char* argv[]) {
     }
 
     // --- Interactive mode ---
-    // If a filename is provided as single argument, pre-load it
+    // If a filename is provided as single argument, pass it to runInteractive
+    // so it pre-loads the data and prints a summary before the menu loop.
     if (argc == 2 && std::string(argv[1]) != "-b") {
-        std::cout << "Pre-loading file: " << argv[1] << std::endl;
-        // We'll handle this inside interactive mode
+        return runInteractive(argv[1]);
     }
 
     return runInteractive();

@@ -10,9 +10,21 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
+
+// Cross-platform temp directory (TEMP/TMP env var on Windows, "./" fallback)
+static std::string tmpDir() {
+    const char* t = std::getenv("TEMP");
+    if (!t) t = std::getenv("TMP");
+    return t ? std::string(t) + "/" : "./";
+}
+
+static std::string tmpPath(const std::string& name) {
+    return tmpDir() + name;
+}
 
 static std::string writeTempFile(const std::string& content, const std::string& name) {
-    std::string path = "/tmp/" + name;
+    std::string path = tmpPath(name);
     std::ofstream f(path);
     f << content;
     f.close();
@@ -53,7 +65,7 @@ void test_output_figure2() {
     ProblemData data = parser.parse(inPath);
     SolverResult result = Solver::solve(data);
 
-    std::string outPath = "/tmp/test_fig2_out.csv";
+    std::string outPath = tmpPath("test_fig2_out.csv");
     OutputWriter::writeToFile(outPath, result, data);
 
     std::string output = readFile(outPath);
@@ -78,9 +90,9 @@ void test_output_figure2() {
 // ============================================================================
 void test_output_figure3() {
     ProblemData data;
-    data.addSubmission({31, 3, std::nullopt});
-    data.addSubmission({87, 1, std::nullopt});
-    data.addReviewer({1, 1, std::nullopt});
+    data.addSubmission({31, "", "", "", 3, std::nullopt});
+    data.addSubmission({87, "", "", "", 1, std::nullopt});
+    data.addReviewer({1, "", "", 1, std::nullopt});
     data.config.minReviewsPerSubmission = 3;
     data.config.maxReviewsPerReviewer = 3;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -92,7 +104,7 @@ void test_output_figure3() {
     // Sub 31 (dom=3): no compatible reviewer → 3 missing
     // Sub 87 (dom=1): 1 review of 3 needed → 2 missing
 
-    std::string outPath = "/tmp/test_fig3_out.csv";
+    std::string outPath = tmpPath("test_fig3_out.csv");
     OutputWriter::writeToFile(outPath, result, data);
     std::string output = readFile(outPath);
 
@@ -108,10 +120,10 @@ void test_output_figure3() {
 // ============================================================================
 void test_output_figure4() {
     ProblemData data;
-    data.addSubmission({10, 1, std::nullopt});
-    data.addSubmission({20, 2, std::nullopt});
-    data.addReviewer({1, 1, std::nullopt});
-    data.addReviewer({2, 2, std::nullopt});
+    data.addSubmission({10, "", "", "", 1, std::nullopt});
+    data.addSubmission({20, "", "", "", 2, std::nullopt});
+    data.addReviewer({1, "", "", 1, std::nullopt});
+    data.addReviewer({2, "", "", 2, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 1;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -119,7 +131,7 @@ void test_output_figure4() {
 
     SolverResult result = Solver::solveWithRiskAnalysis(data);
 
-    std::string riskPath = "/tmp/test_fig4_risk.csv";
+    std::string riskPath = tmpPath("test_fig4_risk.csv");
     OutputWriter::writeRiskToFile(riskPath, result, 1);
     std::string output = readFile(riskPath);
 
@@ -134,10 +146,10 @@ void test_output_figure4() {
 // ============================================================================
 void test_output_no_risk() {
     ProblemData data;
-    data.addSubmission({10, 1, std::nullopt});
-    data.addReviewer({1, 1, std::nullopt});
-    data.addReviewer({2, 1, std::nullopt});
-    data.addReviewer({3, 1, std::nullopt});
+    data.addSubmission({10, "", "", "", 1, std::nullopt});
+    data.addReviewer({1, "", "", 1, std::nullopt});
+    data.addReviewer({2, "", "", 1, std::nullopt});
+    data.addReviewer({3, "", "", 1, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 1;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
@@ -145,7 +157,7 @@ void test_output_no_risk() {
 
     SolverResult result = Solver::solveWithRiskAnalysis(data);
 
-    std::string riskPath = "/tmp/test_norisk.csv";
+    std::string riskPath = tmpPath("test_norisk.csv");
     OutputWriter::writeRiskToFile(riskPath, result, 1);
     std::string output = readFile(riskPath);
 
@@ -160,18 +172,18 @@ void test_output_no_risk() {
 // ============================================================================
 void test_output_sorted() {
     ProblemData data;
-    data.addSubmission({5, 1, std::nullopt});
-    data.addSubmission({3, 1, std::nullopt});
-    data.addSubmission({8, 1, std::nullopt});
-    data.addReviewer({20, 1, std::nullopt});
-    data.addReviewer({10, 1, std::nullopt});
+    data.addSubmission({5, "", "", "", 1, std::nullopt});
+    data.addSubmission({3, "", "", "", 1, std::nullopt});
+    data.addSubmission({8, "", "", "", 1, std::nullopt});
+    data.addReviewer({20, "", "", 1, std::nullopt});
+    data.addReviewer({10, "", "", 1, std::nullopt});
     data.config.minReviewsPerSubmission = 1;
     data.config.maxReviewsPerReviewer = 2;
     data.config.matchMode = MatchMode::PRIMARY_ONLY;
 
     SolverResult result = Solver::solve(data);
 
-    std::string outPath = "/tmp/test_sorted_out.csv";
+    std::string outPath = tmpPath("test_sorted_out.csv");
     OutputWriter::writeToFile(outPath, result, data);
     std::string output = readFile(outPath);
 
@@ -196,7 +208,11 @@ void test_output_sorted() {
 // TEST 6: Full pipeline batch simulation
 // ============================================================================
 void test_full_batch_pipeline() {
-    // Create input file
+    // Compute platform-correct temp paths for output files
+    std::string batchOut  = tmpPath("batch_test_out.csv");
+    std::string batchRisk = tmpPath("batch_test_risk.csv");
+
+    // Create input file (OutputFileName must point to a writable temp path)
     std::string input =
         "#Submissions\n"
         "100, 1\n"
@@ -215,7 +231,7 @@ void test_full_batch_pipeline() {
         "#Control\n"
         "GenerateAssignments, 1\n"
         "RiskAnalysis, 1\n"
-        "OutputFileName, \"/tmp/batch_test_out.csv\"\n";
+        "OutputFileName, \"" + batchOut + "\"\n";
 
     auto inPath = writeTempFile(input, "batch_pipeline.csv");
     Parser parser;
@@ -229,12 +245,12 @@ void test_full_batch_pipeline() {
     assert(result.unfulfilled.empty());
 
     // Write outputs
-    OutputWriter::writeToFile("/tmp/batch_test_out.csv", result, data);
-    OutputWriter::writeRiskToFile("/tmp/batch_test_risk.csv", result, 1);
+    OutputWriter::writeToFile(batchOut, result, data);
+    OutputWriter::writeRiskToFile(batchRisk, result, 1);
 
     // Verify files exist and have content
-    std::string assignOut = readFile("/tmp/batch_test_out.csv");
-    std::string riskOut = readFile("/tmp/batch_test_risk.csv");
+    std::string assignOut = readFile(batchOut);
+    std::string riskOut = readFile(batchRisk);
 
     assert(!assignOut.empty());
     assert(assignOut.find("#Total: 3") != std::string::npos);

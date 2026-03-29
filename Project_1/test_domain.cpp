@@ -4,23 +4,23 @@
 
 int main() {
     // === Test 1: Submission creation and domain matching ===
-    Submission s1{87, 1, std::nullopt};
+    Submission s1{87, "", "", "", 1, std::nullopt};
     assert(s1.hasDomain(1, true, false)  == true);
     assert(s1.hasDomain(2, true, false)  == false);
     assert(s1.hasDomain(1, false, true)  == false);  // no secondary
 
-    Submission s2{31, 4, 2};  // has secondary domain = 2
+    Submission s2{31, "Test Title", "Test Author", "test@test.com", 4, 2};  // has secondary domain = 2
     assert(s2.hasDomain(4, true, false) == true);
     assert(s2.hasDomain(2, true, false) == false);
     assert(s2.hasDomain(2, false, true) == true);   // secondary match
     assert(s2.hasDomain(2, true, true)  == true);    // either matches
 
     // === Test 2: Reviewer creation and expertise matching ===
-    Reviewer r1{1, 1, std::nullopt};
+    Reviewer r1{1, "", "", 1, std::nullopt};
     assert(r1.hasExpertise(1) == true);
     assert(r1.hasExpertise(2) == false);
 
-    Reviewer r2{2, 4, 3};  // secondary expertise = 3
+    Reviewer r2{2, "Test Reviewer", "rev@test.com", 4, 3};  // secondary expertise = 3
     assert(r2.hasExpertise(4, true, false) == true);
     assert(r2.hasExpertise(3, false, true) == true);
     assert(r2.hasExpertise(3, true, true)  == true);
@@ -54,10 +54,10 @@ int main() {
 
     // === Test 5: ProblemData with duplicate detection ===
     ProblemData data;
-    data.addSubmission({87, 1, std::nullopt});
-    data.addSubmission({31, 4, 2});
-    data.addReviewer({1, 1, std::nullopt});
-    data.addReviewer({2, 4, std::nullopt});
+    data.addSubmission({87, "", "", "", 1, std::nullopt});
+    data.addSubmission({31, "", "", "", 4, 2});
+    data.addReviewer({1, "", "", 1, std::nullopt});
+    data.addReviewer({2, "", "", 4, std::nullopt});
 
     assert(data.numSubmissions() == 2);
     assert(data.numReviewers()   == 2);
@@ -68,7 +68,7 @@ int main() {
 
     // Duplicate detection
     try {
-        data.addSubmission({87, 3, std::nullopt});
+        data.addSubmission({87, "", "", "", 3, std::nullopt});
         assert(false && "Should have thrown on duplicate");
     } catch (const std::runtime_error&) {
         // expected

@@ -7,10 +7,15 @@
 #include <cassert>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
-// Helper: write a string to a temp file and return its path
+// Helper: write a string to a temp file and return its path (cross-platform).
+// Uses the TEMP/TMP environment variable on Windows, /tmp on Unix, or "./" as fallback.
 static std::string writeTempFile(const std::string& content, const std::string& name) {
-    std::string path = "/tmp/" + name;
+    const char* tmpEnv = std::getenv("TEMP");
+    if (!tmpEnv) tmpEnv = std::getenv("TMP");
+    std::string dir = tmpEnv ? std::string(tmpEnv) + "/" : "./";
+    std::string path = dir + name;
     std::ofstream f(path);
     f << content;
     f.close();

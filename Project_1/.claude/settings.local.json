@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(g++ -std=c++17 -O2 -fno-exceptions -o test_min5h.exe test_min5.cpp)",
+      "Bash(./test_min5h.exe)",
+      "Bash(echo \"Exit: $?\")",
+      "Bash(g++ -std=c++17 -O2 -fno-omit-frame-pointer -o test_min5i.exe test_min5.cpp)",
+      "Bash(./test_min5i.exe)",
+      "Bash(g++ -std=c++17 -O1 -fno-inline -o test_min5j.exe test_min5.cpp)",
+      "Bash(./test_min5j.exe)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"\\n=== DA2026 Project 1 — Checklist ===\\n\\n[DONE] T1.1  CLI interactive menu + batch mode (-b flag)\\n[DONE] T1.2  Parser: real CSV format (quoted fields, all sections, PrimaryReviewerExpertise)\\n[DONE] T2.1  Max-Flow assignment (primary domains, Edmonds-Karp)\\n[DONE] T2.2  Risk Analysis K=1\\n[DONE] Tests  46/46 passing (domain/parser/graph/output)\\n\\n[ ]    T1.3  Doxygen HTML documentation  (2.0 pts)\\n[ ]    T2.3  Written outline: Risk Analysis K>1 + complexity  (3.0 pts)\\n[ ]    T2.4  General formulation: primary+secondary domains  (3.0 pts)\\n[ ]    T3.1  10-min demo + PowerPoint presentation  (3.0 pts)\\n[ ]    ZIP   DA2026_PRJ1_T<TN>_G<GN>.zip — deadline Mar 30 23:59\\n===================================\\n\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}

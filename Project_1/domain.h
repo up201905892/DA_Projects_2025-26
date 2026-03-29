@@ -76,6 +76,9 @@ using DomainCode = int;
  */
 struct Submission {
     EntityId                    id;                ///< Unique submission identifier (must be positive).
+    std::string                 title;             ///< Paper title (may contain commas if quoted in CSV).
+    std::string                 authors;           ///< Author list string.
+    std::string                 email;             ///< Contact e-mail address.
     DomainCode                  primaryDomain;     ///< Mandatory primary scientific domain.
     std::optional<DomainCode>   secondaryDomain;   ///< Optional secondary scientific domain.
 
@@ -125,6 +128,8 @@ struct Submission {
  */
 struct Reviewer {
     EntityId                    id;                  ///< Unique reviewer identifier (must be positive).
+    std::string                 name;                ///< Reviewer full name.
+    std::string                 email;               ///< Reviewer e-mail address.
     DomainCode                  primaryExpertise;    ///< Mandatory primary domain of expertise.
     std::optional<DomainCode>   secondaryExpertise;  ///< Optional secondary domain of expertise.
 
@@ -207,6 +212,14 @@ struct Config {
 
     int minReviewsPerSubmission = 1;   ///< Minimum reviews each submission must receive.
     int maxReviewsPerReviewer   = 1;   ///< Maximum reviews each reviewer can perform.
+
+    /**
+     * @brief Whether the input provides primary reviewer expertise (from #Parameters).
+     *
+     * Maps to "PrimaryReviewerExpertise" field: 0 = no, 1 = yes.
+     * Should always be 1 (mandatory) in well-formed input.
+     */
+    bool primaryReviewerExpertise = true;
 
     /**
      * @brief Whether to consider secondary reviewer expertise (from #Parameters).

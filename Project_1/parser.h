@@ -128,8 +128,9 @@ public:
                     state = State::CONTROL;
                     seenControl = true;
                 } else {
-                    // Unknown section header — skip silently (could be a comment)
-                    state = State::IDLE;
+                    // Unknown section header or column-header comment — skip silently
+                    // Do NOT change state: e.g. "#Id, Title, ..." is a column header
+                    // inside a section and must not reset the current parsing state.
                 }
                 continue; // Header line consumed, move to next line
             }
@@ -235,7 +236,15 @@ private:
     // ========================================================================
 
     /**
-     * @brief Parses a single submission line: "id, primaryDomain [, secondaryDomain]"
+     * @brief Parses a single submission line.
+     *
+     * Expected CSV format: `Id, Title, Authors, E-mail, Primary [, Secondary]`
+     * - 5 fields: no secondary domain.
+     * - 6 fields: includes optional secondary domain.
+     * Title may contain commas if the field is quoted (handled by splitCSV).
+     *
+     * Legacy format without text fields (`Id, Primary [, Secondary]`) is also
+     * accepted for backwards compatibility with unit-test mock data.
      *
      * @param line      Trimmed line content.
      * @param lineNum   1-based line number for error reporting.
@@ -248,20 +257,35 @@ private:
     static void parseSubmissionLine(const std::string& line, int lineNum,
                                     ProblemData& data) {
         auto tokens = splitCSV(line);
-        if (tokens.size() < 2 || tokens.size() > 3) {
-            throw ParseError(
-                "Submission line expects 2–3 fields (id, domain [, secondary]), got " +
-                std::to_string(tokens.size()) + ": \"" + line + "\"",
-                lineNum, "#Submissions");
-        }
 
         Submission sub;
-        sub.id            = parseIntField(tokens[0], "submission ID", lineNum, "#Submissions");
-        sub.primaryDomain = parseIntField(tokens[1], "primary domain", lineNum, "#Submissions");
 
-        if (tokens.size() == 3) {
-            sub.secondaryDomain = parseIntField(tokens[2], "secondary domain",
-                                                lineNum, "#Submissions");
+        // Full format: Id, Title, Authors, E-mail, Primary [, Secondary]  → 5 or 6 tokens
+        // Legacy format: Id, Primary [, Secondary]                         → 2 or 3 tokens
+        if (tokens.size() == 5 || tokens.size() == 6) {
+            sub.id      = parseIntField(tokens[0], "submission ID",   lineNum, "#Submissions");
+            sub.title   = tokens[1];
+            sub.authors = tokens[2];
+            sub.email   = tokens[3];
+            sub.primaryDomain = parseIntField(tokens[4], "primary domain", lineNum, "#Submissions");
+            if (tokens.size() == 6) {
+                sub.secondaryDomain = parseIntField(tokens[5], "secondary domain",
+                                                    lineNum, "#Submissions");
+            }
+        } else if (tokens.size() == 2 || tokens.size() == 3) {
+            // Legacy / test format: Id, Primary [, Secondary]
+            sub.id            = parseIntField(tokens[0], "submission ID",   lineNum, "#Submissions");
+            sub.primaryDomain = parseIntField(tokens[1], "primary domain",  lineNum, "#Submissions");
+            if (tokens.size() == 3) {
+                sub.secondaryDomain = parseIntField(tokens[2], "secondary domain",
+                                                    lineNum, "#Submissions");
+            }
+        } else {
+            throw ParseError(
+                "Submission line expects 5–6 fields (Id, Title, Authors, E-mail, Primary"
+                " [, Secondary]) or 2–3 legacy fields, got " +
+                std::to_string(tokens.size()) + ": \"" + line + "\"",
+                lineNum, "#Submissions");
         }
 
         // Validate: ID must be positive
@@ -288,7 +312,14 @@ private:
     }
 
     /**
-     * @brief Parses a single reviewer line: "id, primaryExpertise [, secondaryExpertise]"
+     * @brief Parses a single reviewer line.
+     *
+     * Expected CSV format: `Id, Name, E-mail, Primary [, Secondary]`
+     * - 4 fields: no secondary expertise.
+     * - 5 fields: includes optional secondary expertise.
+     *
+     * Legacy format without text fields (`Id, Primary [, Secondary]`) is also
+     * accepted for backwards compatibility with unit-test mock data.
      *
      * @param line      Trimmed line content.
      * @param lineNum   1-based line number for error reporting.
@@ -301,20 +332,35 @@ private:
     static void parseReviewerLine(const std::string& line, int lineNum,
                                   ProblemData& data) {
         auto tokens = splitCSV(line);
-        if (tokens.size() < 2 || tokens.size() > 3) {
-            throw ParseError(
-                "Reviewer line expects 2–3 fields (id, expertise [, secondary]), got " +
-                std::to_string(tokens.size()) + ": \"" + line + "\"",
-                lineNum, "#Reviewers");
-        }
 
         Reviewer rev;
-        rev.id               = parseIntField(tokens[0], "reviewer ID", lineNum, "#Reviewers");
-        rev.primaryExpertise  = parseIntField(tokens[1], "primary expertise", lineNum, "#Reviewers");
 
-        if (tokens.size() == 3) {
-            rev.secondaryExpertise = parseIntField(tokens[2], "secondary expertise",
-                                                   lineNum, "#Reviewers");
+        // Full format: Id, Name, E-mail, Primary [, Secondary]  → 4 or 5 tokens
+        // Legacy format: Id, Primary [, Secondary]              → 2 or 3 tokens
+        if (tokens.size() == 4 || tokens.size() == 5) {
+            rev.id    = parseIntField(tokens[0], "reviewer ID",       lineNum, "#Reviewers");
+            rev.name  = tokens[1];
+            rev.email = tokens[2];
+            rev.primaryExpertise = parseIntField(tokens[3], "primary expertise",
+                                                 lineNum, "#Reviewers");
+            if (tokens.size() == 5) {
+                rev.secondaryExpertise = parseIntField(tokens[4], "secondary expertise",
+                                                       lineNum, "#Reviewers");
+            }
+        } else if (tokens.size() == 2 || tokens.size() == 3) {
+            // Legacy / test format: Id, Primary [, Secondary]
+            rev.id               = parseIntField(tokens[0], "reviewer ID",       lineNum, "#Reviewers");
+            rev.primaryExpertise = parseIntField(tokens[1], "primary expertise",  lineNum, "#Reviewers");
+            if (tokens.size() == 3) {
+                rev.secondaryExpertise = parseIntField(tokens[2], "secondary expertise",
+                                                       lineNum, "#Reviewers");
+            }
+        } else {
+            throw ParseError(
+                "Reviewer line expects 4–5 fields (Id, Name, E-mail, Primary"
+                " [, Secondary]) or 2–3 legacy fields, got " +
+                std::to_string(tokens.size()) + ": \"" + line + "\"",
+                lineNum, "#Reviewers");
         }
 
         // Validate: ID must be positive
@@ -375,6 +421,9 @@ private:
         } else if (key == "maxreviewsperreviewer") {
             config.maxReviewsPerReviewer =
                 parseIntField(tokens[1], "MaxReviewsPerReviewer", lineNum, "#Parameters");
+        } else if (key == "primaryreviewerexpertise") {
+            config.primaryReviewerExpertise =
+                parseBoolField(tokens[1], "PrimaryReviewerExpertise", lineNum, "#Parameters");
         } else if (key == "secondaryreviewerexpertise") {
             config.secondaryReviewerExpertise =
                 parseBoolField(tokens[1], "SecondaryReviewerExpertise", lineNum, "#Parameters");
@@ -444,14 +493,22 @@ private:
     // ========================================================================
 
     /**
-     * @brief Splits a CSV line by commas, trimming each token.
+     * @brief Splits a CSV line by commas, respecting double-quoted fields.
+     *
+     * Commas inside double quotes are treated as part of the field value.
+     * The surrounding quotes are stripped from the result. Each token is
+     * trimmed of leading/trailing whitespace. Empty tokens (e.g., from a
+     * trailing comma used to mark an absent optional field) are discarded.
      *
      * @param line The input line.
-     * @return Vector of trimmed tokens.
+     * @return Vector of trimmed, unquoted tokens (empty tokens excluded).
      *
      * @par Example:
      * @code
+     *   splitCSV("31, \"Silva, João\", foo@bar.com, 4")
+     *     → {"31", "Silva, João", "foo@bar.com", "4"}
      *   splitCSV("  31 , 4 , 2  ") → {"31", "4", "2"}
+     *   splitCSV("87, \"Title\", Author, email, 1,") → {"87","Title","Author","email","1"}
      * @endcode
      *
      * @par Complexity
@@ -459,14 +516,30 @@ private:
      */
     static std::vector<std::string> splitCSV(const std::string& line) {
         std::vector<std::string> tokens;
-        std::stringstream ss(line);
-        std::string token;
-        while (std::getline(ss, token, ',')) {
-            token = trim(token);
-            if (!token.empty()) {
-                tokens.push_back(token);
+        std::string current;
+        bool inQuotes = false;
+
+        for (size_t i = 0; i < line.size(); ++i) {
+            char c = line[i];
+            if (c == '"') {
+                inQuotes = !inQuotes;   // toggle quote mode; quote char itself not stored
+            } else if (c == ',' && !inQuotes) {
+                std::string t = trim(current);
+                if (!t.empty()) {
+                    tokens.push_back(t);
+                }
+                current.clear();
+            } else {
+                current += c;
             }
         }
+
+        // Flush the last field
+        std::string t = trim(current);
+        if (!t.empty()) {
+            tokens.push_back(t);
+        }
+
         return tokens;
     }
 
