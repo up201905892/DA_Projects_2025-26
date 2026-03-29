@@ -175,13 +175,13 @@ public:
         }
 
         // Validate parameter consistency
-        if (data.config.minReviewsPerSubmission < 0) {
-            errors.push_back("MinReviewsPerSubmission must be >= 0, got: " +
-                             std::to_string(data.config.minReviewsPerSubmission));
+        if (data.config.minReviewsPerSubmission < 1) {
+            errors.push_back("MinReviewsPerSubmission must be >= 1, got: " +
+                            std::to_string(data.config.minReviewsPerSubmission));
         }
-        if (data.config.maxReviewsPerReviewer < 0) {
-            errors.push_back("MaxReviewsPerReviewer must be >= 0, got: " +
-                             std::to_string(data.config.maxReviewsPerReviewer));
+        if (data.config.maxReviewsPerReviewer < 1) {
+            errors.push_back("MaxReviewsPerReviewer must be >= 1, got: " +
+                            std::to_string(data.config.maxReviewsPerReviewer));
         }
         if (data.config.riskAnalysis < 0) {
             errors.push_back("RiskAnalysis must be >= 0, got: " +
