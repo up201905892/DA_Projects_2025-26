@@ -1,0 +1,44 @@
+<map id="test_whitespace_tolerance" name="test_whitespace_tolerance">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,181,201,206"/>
+<area shape="rect" id="Node000002" href="$structProblemData.html#af8f49cc7cddaa7219f2a6f3bc9853474" title="Number of submissions." alt="" coords="249,155,476,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,181,235,178,236,183,202,187"/>
+<area shape="rect" id="Node000003" href="$classParser.html#a5a2a7fa051b2dce0c67484fcb141d913" title="Parses the input file and returns a fully populated ProblemData." alt="" coords="309,205,416,230"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,200,296,209,295,214,201,205"/>
+<area shape="rect" id="Node000004" href="$classParser.html#abe415229c2daa3f3ba4efd44661bd703" title="Parses a control line: &quot;KeyName, value&quot;." alt="" coords="538,129,718,154"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="416,205,475,190,523,171,570,156,571,161,525,176,477,195,417,210"/>
+<area shape="rect" id="Node000007" href="$classParser.html#a113f0dfba3013e3dade8b717063ad8a0" title="Trims leading and trailing whitespace from a string." alt="" coords="1071,29,1169,54"/>
+<area shape="poly" id="edge26_Node000003_Node000007" title=" " alt="" coords="416,211,446,204,474,190,491,173,498,154,506,134,522,114,586,69,641,43,702,28,780,13,840,5,887,3,995,13,1058,24,1057,29,994,19,887,9,840,10,780,19,703,33,643,48,588,73,526,118,510,137,503,156,495,175,478,194,448,209,417,217"/>
+<area shape="rect" id="Node000009" href="$classParser.html#a381845570bc3e8444268d1f0165e5c18" title="Converts a string to lowercase (for case&#45;insensitive comparison)." alt="" coords="826,179,949,205"/>
+<area shape="poly" id="edge25_Node000003_Node000009" title=" " alt="" coords="416,212,812,193,812,198,417,218"/>
+<area shape="rect" id="Node000011" href="$classParser.html#a49fdbc3e3b2c220e042d77ea0568bdba" title="Parses a parameter line: &quot;KeyName, value&quot;." alt="" coords="528,230,728,255"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="417,220,515,229,514,235,416,225"/>
+<area shape="rect" id="Node000013" href="$classParser.html#a8b52e53cfc75a57e18f03d925823fe2a" title="Parses a single reviewer line." alt="" coords="531,442,725,467"/>
+<area shape="poly" id="edge17_Node000003_Node000013" title=" " alt="" coords="380,228,604,431,601,435,376,232"/>
+<area shape="rect" id="Node000015" href="$classParser.html#ab15bc67b738ede92f26a5ead4c294bd3" title="Parses a single submission line." alt="" coords="524,317,732,342"/>
+<area shape="poly" id="edge21_Node000003_Node000015" title=" " alt="" coords="395,228,586,309,583,314,393,233"/>
+<area shape="rect" id="Node000005" href="$classParser.html#a54de14fb280b60a07adfbf68c508b767" title="Parses a trimmed token as an integer with error context." alt="" coords="1043,329,1197,354"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="705,126,770,121,846,123,923,136,961,148,996,164,1037,197,1070,237,1095,279,1111,315,1107,317,1090,282,1066,240,1034,200,993,169,959,153,922,141,845,128,771,126,705,131"/>
+<area shape="rect" id="Node000006" href="$classParser.html#aacf502fa084a101374bda3681e0d23bb" title="Splits a CSV line by commas, respecting double&#45;quoted fields." alt="" coords="825,278,949,303"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="650,152,734,215,757,242,766,254,781,264,813,277,811,282,779,269,763,257,753,246,730,219,647,156"/>
+<area shape="rect" id="Node000008" href="$classParser.html#a52df5c3f8fc72a8a486ae35a61d764d1" title="Removes surrounding double quotes from a string value." alt="" coords="815,29,960,54"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="649,126,707,95,779,63,804,55,806,60,781,68,709,100,652,131"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="695,152,813,175,812,180,694,157"/>
+<area shape="rect" id="Node000010" href="$domain_8h.html#a0e806904288551ac6c43e2d413164657" title="Converts an integer from the input file to a MatchMode." alt="" coords="832,78,943,103"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="694,126,818,101,819,107,695,131"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="949,283,972,276,993,265,1017,244,1038,219,1071,164,1095,111,1109,67,1115,68,1100,112,1076,167,1042,222,1021,247,996,269,974,281,950,288"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="960,39,1057,39,1057,44,960,44"/>
+<area shape="poly" id="edge14_Node000011_Node000005" title=" " alt="" coords="651,253,708,285,744,301,781,313,844,327,910,336,1029,341,1029,346,909,341,844,332,779,319,742,306,705,290,648,258"/>
+<area shape="poly" id="edge15_Node000011_Node000006" title=" " alt="" coords="698,253,812,274,811,279,697,258"/>
+<area shape="poly" id="edge16_Node000011_Node000009" title=" " alt="" coords="694,227,812,204,813,209,695,233"/>
+<area shape="rect" id="Node000012" href="$classParser.html#ac9cbf2eac7c906d2da2d95b9c16cc02e" title="Parses a trimmed token as a boolean (0 or 1)." alt="" coords="804,229,971,254"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="728,240,790,239,790,245,728,245"/>
+<area shape="poly" id="edge13_Node000012_Node000005" title=" " alt="" coords="957,252,996,264,1048,290,1091,318,1089,323,1045,295,994,269,955,257"/>
+<area shape="poly" id="edge19_Node000013_Node000005" title=" " alt="" coords="673,465,737,479,819,489,863,490,908,487,952,479,994,466,1028,445,1058,419,1102,364,1106,367,1062,422,1031,450,996,470,953,485,909,493,863,496,819,495,736,484,671,470"/>
+<area shape="poly" id="edge20_Node000013_Node000006" title=" " alt="" coords="648,440,853,309,856,313,651,444"/>
+<area shape="rect" id="Node000014" href="$structProblemData.html#a9f9c5ab24ac824b060f3cdb7bbd764bf" title="Adds a reviewer with duplicate&#45;ID detection." alt="" coords="787,531,987,557"/>
+<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="662,465,781,510,829,525,828,530,779,515,660,470"/>
+<area shape="poly" id="edge23_Node000015_Node000005" title=" " alt="" coords="679,339,780,357,887,364,994,357,1033,353,1034,359,995,363,887,369,780,363,678,345"/>
+<area shape="poly" id="edge24_Node000015_Node000006" title=" " alt="" coords="713,314,811,299,812,305,714,319"/>
+<area shape="rect" id="Node000016" href="$structProblemData.html#a849ef6ded60771bec2a5e1b6faf0545c" title="Adds a submission with duplicate&#45;ID detection." alt="" coords="780,430,995,455"/>
+<area shape="poly" id="edge22_Node000015_Node000016" title=" " alt="" coords="651,340,708,373,781,408,824,424,822,429,779,413,706,378,648,344"/>
+</map>

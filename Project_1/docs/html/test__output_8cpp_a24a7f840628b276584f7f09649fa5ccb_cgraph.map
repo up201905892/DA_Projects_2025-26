@@ -1,0 +1,59 @@
+<map id="test_output_figure4" name="test_output_figure4">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,307,153,332"/>
+<area shape="rect" id="Node000002" href="$structProblemData.html#a9f9c5ab24ac824b060f3cdb7bbd764bf" title="Adds a reviewer with duplicate&#45;ID detection." alt="" coords="211,232,411,257"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,304,200,266,229,258,231,263,202,271,108,309"/>
+<area shape="rect" id="Node000003" href="$structProblemData.html#a849ef6ded60771bec2a5e1b6faf0545c" title="Adds a submission with duplicate&#45;ID detection." alt="" coords="203,281,418,307"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,309,190,305,190,310,154,314"/>
+<area shape="rect" id="Node000004" href="$classSolver.html#ae2ca491c309b717821844e7f2a9ea629" title="Performs Risk Analysis with parameter K = 1." alt="" coords="201,331,420,356"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="154,324,188,328,187,333,153,330"/>
+<area shape="rect" id="Node000024" href="$classOutputWriter.html#a5c8ac7df7471d1b8aa82e5776cc53871" title="Writes the risk analysis results to a separate file." alt="" coords="205,431,417,456"/>
+<area shape="poly" id="edge31_Node000001_Node000024" title=" " alt="" coords="106,330,275,422,273,427,103,334"/>
+<area shape="rect" id="Node000005" href="$classNetworkBuilder.html#af514e79c3d2f21597c54e01c4ce9475d" title="Builds the complete flow network." alt="" coords="470,431,689,456"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="347,354,532,423,530,428,345,359"/>
+<area shape="rect" id="Node000010" href="$structProblemData.html#a8972080e7733220bd51b437e111bf5c9" title="Number of reviewers." alt="" coords="769,355,981,380"/>
+<area shape="poly" id="edge28_Node000004_Node000010" title=" " alt="" coords="420,345,755,360,754,365,420,351"/>
+<area shape="rect" id="Node000011" href="$structProblemData.html#af8f49cc7cddaa7219f2a6f3bc9853474" title="Number of submissions." alt="" coords="761,656,988,681"/>
+<area shape="poly" id="edge29_Node000004_Node000011" title=" " alt="" coords="334,354,375,382,422,417,445,444,454,455,469,466,501,480,530,486,584,486,610,485,637,489,664,499,692,519,706,534,713,550,717,583,721,614,728,629,740,643,751,650,748,654,737,647,723,632,716,616,712,583,708,552,701,537,689,523,661,504,635,494,610,491,584,491,529,491,499,485,467,471,451,459,441,448,418,421,372,386,331,358"/>
+<area shape="rect" id="Node000012" href="$classNetworkBuilder.html#a0b1fedb0791107aa56d1022f3964269f" title="Maps a reviewer&#39;s vector index to its graph node ID." alt="" coords="763,305,986,331"/>
+<area shape="poly" id="edge30_Node000004_Node000012" title=" " alt="" coords="420,336,749,321,750,326,420,341"/>
+<area shape="rect" id="Node000016" href="$classGraph.html#a24e78627debf97e225128856196398dc" title="Disables all edges from a specific node by setting capacity to 0." alt="" coords="504,156,655,181"/>
+<area shape="poly" id="edge15_Node000004_Node000016" title=" " alt="" coords="395,328,418,316,435,299,443,281,451,261,466,240,502,210,539,186,542,190,505,214,470,244,456,264,448,283,439,302,422,320,397,333"/>
+<area shape="rect" id="Node000017" href="$classGraph.html#afd2749a1cd58db2d3b6fa6eef639399c" title="Computes the maximum flow from source to sink using Edmonds&#45;Karp." alt="" coords="500,56,659,81"/>
+<area shape="poly" id="edge17_Node000004_Node000017" title=" " alt="" coords="401,328,418,316,434,296,443,276,446,234,446,190,452,166,466,142,498,109,535,86,537,90,501,113,470,145,457,168,452,191,451,234,448,277,439,299,422,320,404,333"/>
+<area shape="rect" id="Node000020" href="$classSolver.html#ab064c56e0bda025818ce6f8461dd4e80" title="Extracts the assignment from the solved flow network." alt="" coords="500,255,659,280"/>
+<area shape="poly" id="edge21_Node000004_Node000020" title=" " alt="" coords="372,328,419,315,467,297,517,281,518,286,469,302,421,321,374,333"/>
+<area shape="rect" id="Node000006" href="$classGraph.html#a8cdfb932968807565b3cc3b52759e3b8" title="Adds a directed edge (u → v) with the given capacity, along with its reverse edge (v → u) with capaci..." alt="" coords="812,404,937,429"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="689,431,798,421,799,426,689,436"/>
+<area shape="rect" id="Node000008" href="$classNetworkBuilder.html#acc9979fa0114fda405375f52dbe49a84" title="Determines if a reviewer can review a submission based on domain matching." alt="" coords="766,607,983,632"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="659,454,692,473,705,488,712,502,717,531,722,559,729,572,740,585,762,599,759,603,737,589,724,576,717,561,712,532,707,504,700,490,689,477,656,458"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="614,428,738,389,778,380,779,385,739,394,616,433"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="663,454,692,473,709,495,716,517,716,561,717,603,725,623,741,643,751,651,748,655,737,647,720,626,712,604,711,561,711,518,704,498,689,477,660,458"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="595,428,655,384,695,360,738,340,762,332,764,337,740,344,697,365,658,389,598,433"/>
+<area shape="rect" id="Node000013" href="$classNetworkBuilder.html#a508fc4af685c78c10f96ab39610d4040" title="Maps a submission&#39;s vector index to its graph node ID." alt="" coords="755,505,994,531"/>
+<area shape="poly" id="edge12_Node000005_Node000013" title=" " alt="" coords="627,453,739,483,805,500,804,505,738,489,626,459"/>
+<area shape="rect" id="Node000014" href="$structConfig.html#a89db87ddce24e353ccabde8d0dc70ade" title="Determines if reviewer secondary expertise should be used in matching." alt="" coords="1066,356,1289,381"/>
+<area shape="poly" id="edge13_Node000005_Node000014" title=" " alt="" coords="689,453,761,457,842,457,927,452,1010,439,1046,429,1082,415,1142,386,1144,391,1084,420,1048,434,1011,445,928,457,842,462,761,462,689,458"/>
+<area shape="rect" id="Node000015" href="$structConfig.html#a936e7b5bd16f50374b648f00465f1a32" title="Determines if submission secondary domains should be used in matching." alt="" coords="1059,531,1296,556"/>
+<area shape="poly" id="edge14_Node000005_Node000015" title=" " alt="" coords="652,454,692,473,709,491,716,510,724,527,740,541,787,561,838,573,890,579,941,580,1039,572,1117,557,1118,562,1039,577,941,586,889,584,837,578,786,566,737,546,719,530,711,512,704,494,689,477,650,458"/>
+<area shape="rect" id="Node000007" href="$classGraph.html#a0a3f35d90f69456655a046806c725063" title="Returns the number of nodes in the graph." alt="" coords="1108,107,1247,132"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="937,413,974,405,1009,389,1027,372,1048,346,1091,277,1162,143,1166,146,1096,280,1052,349,1031,376,1012,394,976,410,938,418"/>
+<area shape="rect" id="Node000009" href="$structSubmission.html#a19ab1b3a6dc11bd0b8254be4cbc31d2d" title="Checks if this submission covers the given domain." alt="" coords="1088,607,1267,632"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="983,617,1074,617,1074,622,983,622"/>
+<area shape="poly" id="edge16_Node000016_Node000007" title=" " alt="" coords="654,153,738,142,929,127,1094,119,1094,124,930,132,739,147,655,159"/>
+<area shape="poly" id="edge20_Node000017_Node000007" title=" " alt="" coords="659,73,1095,110,1094,115,659,78"/>
+<area shape="rect" id="Node000018" href="$classGraph.html#a348391db529c20a826a1483fe7bdcb9a" title="BFS on the residual graph to find the shortest augmenting path." alt="" coords="830,5,919,31"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="654,53,816,25,817,31,655,59"/>
+<area shape="rect" id="Node000019" href="$structEdge.html#a0b45154adf516897233895a25fad355e" title="Residual capacity of this edge." alt="" coords="1120,5,1235,31"/>
+<area shape="poly" id="edge19_Node000018_Node000019" title=" " alt="" coords="920,15,1106,15,1106,21,920,21"/>
+<area shape="poly" id="edge27_Node000020_Node000012" title=" " alt="" coords="655,277,787,300,786,306,654,283"/>
+<area shape="rect" id="Node000021" href="$classSolver.html#a0a32ae51c07e104de80b39cceaaf325f" title="Determines which domain code caused the match between a reviewer and submission." alt="" coords="773,256,976,281"/>
+<area shape="poly" id="edge22_Node000020_Node000021" title=" " alt="" coords="659,265,759,265,759,271,659,270"/>
+<area shape="rect" id="Node000022" href="$classGraph.html#af5f263b25175df3f5511ff5ede0a63aa" title="Returns the adjacency list of a given node (const)." alt="" coords="819,157,930,183"/>
+<area shape="poly" id="edge25_Node000020_Node000022" title=" " alt="" coords="602,252,662,222,738,191,805,176,806,181,739,197,665,226,605,257"/>
+<area shape="rect" id="Node000023" href="$classNetworkBuilder.html#a4efdb0e13d73f6f3cbf38b4cd11a5ef3" title="Inverse: given a graph node ID, returns the submission vector index." alt="" coords="739,207,1011,232"/>
+<area shape="poly" id="edge26_Node000020_Node000023" title=" " alt="" coords="658,252,782,232,783,237,658,257"/>
+<area shape="poly" id="edge23_Node000021_Node000014" title=" " alt="" coords="967,279,1011,290,1082,318,1142,347,1140,352,1080,323,1010,295,965,284"/>
+<area shape="poly" id="edge24_Node000021_Node000015" title=" " alt="" coords="977,273,1012,291,1033,314,1042,337,1048,363,1061,391,1111,462,1157,518,1153,522,1107,465,1056,394,1043,364,1037,339,1029,316,1009,295,975,278"/>
+<area shape="rect" id="Node000025" href="$classOutputWriter.html#a33523f8610417f2806d5943455614a14" title="Writes the risk analysis section to any output stream." alt="" coords="468,532,691,557"/>
+<area shape="poly" id="edge32_Node000024_Node000025" title=" " alt="" coords="339,454,398,481,469,510,517,526,515,531,467,515,396,486,337,459"/>
+</map>

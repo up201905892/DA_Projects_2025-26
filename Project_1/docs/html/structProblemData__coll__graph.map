@@ -1,0 +1,5 @@
+<map id="ProblemData" name="ProblemData">
+<area shape="rect" id="Node000001" title="Holds all parsed data ready to be consumed by the solver." alt="" coords="22,353,210,599"/>
+<area shape="rect" id="Node000002" href="$structConfig.html" title="Aggregates all configuration parameters parsed from the input file." alt="" coords="5,5,227,291"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,291,119,337,113,337,113,291"/>
+</map>

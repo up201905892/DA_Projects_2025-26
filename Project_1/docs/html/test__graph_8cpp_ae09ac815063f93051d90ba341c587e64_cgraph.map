@@ -1,0 +1,14 @@
+<map id="test_ek_disconnected" name="test_ek_disconnected">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,168,56"/>
+<area shape="rect" id="Node000002" href="$classGraph.html#a8cdfb932968807565b3cc3b52759e3b8" title="Adds a directed edge (u → v) with the given capacity, along with its reverse edge (v → u) with capaci..." alt="" coords="233,5,358,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,31,218,25,219,30,169,36"/>
+<area shape="rect" id="Node000004" href="$classGraph.html#afd2749a1cd58db2d3b6fa6eef639399c" title="Computes the maximum flow from source to sink using Edmonds&#45;Karp." alt="" coords="216,55,375,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="169,50,203,54,202,59,168,55"/>
+<area shape="rect" id="Node000003" href="$classGraph.html#a0a3f35d90f69456655a046806c725063" title="Returns the number of nodes in the graph." alt="" coords="423,5,561,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="358,15,409,15,409,21,358,21"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="346,52,427,31,428,37,347,57"/>
+<area shape="rect" id="Node000005" href="$classGraph.html#a348391db529c20a826a1483fe7bdcb9a" title="BFS on the residual graph to find the shortest augmenting path." alt="" coords="447,55,537,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="375,65,434,65,434,70,375,70"/>
+<area shape="rect" id="Node000006" href="$structEdge.html#a0b45154adf516897233895a25fad355e" title="Residual capacity of this edge." alt="" coords="609,55,724,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="537,65,595,65,595,70,537,70"/>
+</map>

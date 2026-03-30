@@ -1,0 +1,15 @@
+<map id="Solver::extractResult" name="Solver::extractResult">
+<area shape="rect" id="Node000001" title="Extracts the assignment from the solved flow network." alt="" coords="5,104,164,129"/>
+<area shape="rect" id="Node000002" href="$classSolver.html#a0a32ae51c07e104de80b39cceaaf325f" title="Determines which domain code caused the match between a reviewer and submission." alt="" coords="247,29,449,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,101,158,82,211,63,246,55,248,60,213,69,160,87,114,106"/>
+<area shape="rect" id="Node000005" href="$classGraph.html#af5f263b25175df3f5511ff5ede0a63aa" title="Returns the adjacency list of a given node (const)." alt="" coords="293,79,403,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="164,106,279,95,279,101,164,112"/>
+<area shape="rect" id="Node000006" href="$classNetworkBuilder.html#a4efdb0e13d73f6f3cbf38b4cd11a5ef3" title="Inverse: given a graph node ID, returns the submission vector index." alt="" coords="212,128,484,153"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="164,121,199,124,198,130,164,127"/>
+<area shape="rect" id="Node000007" href="$classNetworkBuilder.html#a0b1fedb0791107aa56d1022f3964269f" title="Maps a reviewer&#39;s vector index to its graph node ID." alt="" coords="237,177,459,203"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="116,127,213,162,254,172,253,177,211,167,114,132"/>
+<area shape="rect" id="Node000003" href="$structConfig.html#a89db87ddce24e353ccabde8d0dc70ade" title="Determines if reviewer secondary expertise should be used in matching." alt="" coords="539,5,762,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="449,31,526,25,526,31,450,37"/>
+<area shape="rect" id="Node000004" href="$structConfig.html#a936e7b5bd16f50374b648f00465f1a32" title="Determines if submission secondary domains should be used in matching." alt="" coords="532,55,769,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="450,48,519,54,518,59,449,53"/>
+</map>

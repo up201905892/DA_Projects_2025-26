@@ -1,0 +1,5 @@
+<map id="OutputWriter::listSubmissions" name="OutputWriter::listSubmissions">
+<area shape="rect" id="Node000001" title="Lists all submissions with their domains (and title/authors/email if available)." alt="" coords="5,5,221,31"/>
+<area shape="rect" id="Node000002" href="$structProblemData.html#af8f49cc7cddaa7219f2a6f3bc9853474" title="Number of submissions." alt="" coords="269,5,496,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,15,256,15,256,21,222,21"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="NetworkBuilder::buildNetwork" name="NetworkBuilder::buildNetwork">
+<area shape="rect" id="Node000001" title="Builds the complete flow network." alt="" coords="5,179,224,204"/>
+<area shape="rect" id="Node000002" href="$classGraph.html#a8cdfb932968807565b3cc3b52759e3b8" title="Adds a directed edge (u → v) with the given capacity, along with its reverse edge (v → u) with capaci..." alt="" coords="329,5,454,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,177,180,110,222,72,271,40,314,24,316,29,273,44,226,76,184,114,127,180"/>
+<area shape="rect" id="Node000004" href="$classNetworkBuilder.html#acc9979fa0114fda405375f52dbe49a84" title="Determines if a reviewer can review a submission based on domain matching." alt="" coords="283,55,500,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="130,176,190,133,229,109,271,89,294,81,295,86,273,94,232,114,193,137,133,181"/>
+<area shape="rect" id="Node000006" href="$structProblemData.html#a8972080e7733220bd51b437e111bf5c9" title="Number of reviewers." alt="" coords="285,104,497,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="151,176,271,138,307,130,308,135,273,143,152,181"/>
+<area shape="rect" id="Node000007" href="$structProblemData.html#af8f49cc7cddaa7219f2a6f3bc9853474" title="Number of submissions." alt="" coords="278,153,505,179"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="224,179,264,175,265,180,225,184"/>
+<area shape="rect" id="Node000008" href="$classNetworkBuilder.html#a0b1fedb0791107aa56d1022f3964269f" title="Maps a reviewer&#39;s vector index to its graph node ID." alt="" coords="280,203,503,228"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="225,198,267,202,266,207,224,203"/>
+<area shape="rect" id="Node000009" href="$classNetworkBuilder.html#a508fc4af685c78c10f96ab39610d4040" title="Maps a submission&#39;s vector index to its graph node ID." alt="" coords="272,252,511,277"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="155,202,273,237,313,246,312,252,271,242,153,207"/>
+<area shape="rect" id="Node000010" href="$structConfig.html#a89db87ddce24e353ccabde8d0dc70ade" title="Determines if reviewer secondary expertise should be used in matching." alt="" coords="280,301,503,327"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="134,202,193,244,232,267,273,286,299,295,298,300,271,291,230,271,190,248,131,206"/>
+<area shape="rect" id="Node000011" href="$structConfig.html#a936e7b5bd16f50374b648f00465f1a32" title="Determines if submission secondary domains should be used in matching." alt="" coords="273,351,510,376"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="128,203,184,267,226,305,273,336,292,344,290,349,271,340,223,309,181,271,124,206"/>
+<area shape="rect" id="Node000003" href="$classGraph.html#a0a3f35d90f69456655a046806c725063" title="Returns the number of nodes in the graph." alt="" coords="579,5,717,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="454,15,565,15,565,21,454,21"/>
+<area shape="rect" id="Node000005" href="$structSubmission.html#a19ab1b3a6dc11bd0b8254be4cbc31d2d" title="Checks if this submission covers the given domain." alt="" coords="559,55,737,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="500,65,545,65,545,70,500,70"/>
+</map>

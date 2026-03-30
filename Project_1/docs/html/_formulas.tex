@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{newunicodechar}
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
+
+\pagestyle{empty}
+\begin{document}
+$O(1)$
+\pagebreak
+
+$ m \times \text{MaxRev} \geq n \times \text{MinRev} $
+\pagebreak
+
+$O(n)$
+\pagebreak
+
+$n$
+\pagebreak
+
+$O(m)$
+\pagebreak
+
+$m$
+\pagebreak
+
+$ c_f(u,v) = \text{capacity} - \text{flow} $
+\pagebreak
+
+$O(|V| \cdot |E|^2)$
+\pagebreak
+
+$O(|V| + |E|)$
+\pagebreak
+
+$O(|V|)$
+\pagebreak
+
+$|f^*|$
+\pagebreak
+
+$O(\text{deg}(node))$
+\pagebreak
+
+$O(m \cdot n)$
+\pagebreak
+
+$O(m + n + E_{\text{match}})$
+\pagebreak
+
+$O(m \cdot \text{deg}_{\text{avg}})$
+\pagebreak
+
+$O(m \cdot |V| \cdot |E|^2)$
+\pagebreak
+
+$O(m \cdot \text{deg}_{\text{avg}} + n)$
+\pagebreak
+
+$O(A \log A + U \log U + R \log R)$
+\pagebreak
+
+$O(L)$
+\pagebreak
+
+$L$
+\pagebreak
+
+$O(n + m)$
+\pagebreak
+
+$O(k)$
+\pagebreak
+
+$k$
+\pagebreak
+
+\end{document}

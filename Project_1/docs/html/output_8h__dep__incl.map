@@ -1,0 +1,7 @@
+<map id="output.h" name="output.h">
+<area shape="rect" id="Node000001" title="Output formatter for the conference assignment tool." alt="" coords="71,5,147,31"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html" title="Entry point for the Scientific Conference Organization Tool." alt="" coords="5,79,88,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,43,59,80,55,77,88,39"/>
+<area shape="rect" id="Node000003" href="$test__output_8cpp.html" title="End&#45;to&#45;end tests for the OutputWriter + complete pipeline." alt="" coords="112,79,235,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="131,39,165,77,161,80,127,43"/>
+</map>

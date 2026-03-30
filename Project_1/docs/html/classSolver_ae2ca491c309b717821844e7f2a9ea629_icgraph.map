@@ -1,0 +1,27 @@
+<map id="Solver::solveWithRiskAnalysis" name="Solver::solveWithRiskAnalysis">
+<area shape="rect" id="Node000001" title="Performs Risk Analysis with parameter K = 1." alt="" coords="333,153,552,179"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#adccc9f5ff7d7a84b4f757ddc2e00c25b" title="Executes the program in batch mode." alt="" coords="157,5,237,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="417,145,360,94,323,68,284,44,236,28,238,23,286,40,326,63,363,90,421,141"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#aef0bcc404dd408e438ce7fa09e4ea3f7" title="Executes the program in interactive mode." alt="" coords="140,55,253,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="405,149,349,121,284,94,249,83,251,78,286,89,351,117,407,145"/>
+<area shape="rect" id="Node000005" href="$test__output_8cpp.html#ad98b96469ee1c28ab8390957efbc52e5" title=" " alt="" coords="108,104,285,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="365,153,260,132,261,127,366,148"/>
+<area shape="rect" id="Node000007" href="$test__output_8cpp.html#a24a7f840628b276584f7f09649fa5ccb" title=" " alt="" coords="123,153,271,179"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="320,169,271,169,271,163,320,163"/>
+<area shape="rect" id="Node000008" href="$test__output_8cpp.html#a8907cb43e3cf97150ebba79a523d26cf" title=" " alt="" coords="121,203,272,228"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="366,184,261,205,260,200,365,179"/>
+<area shape="rect" id="Node000009" href="$test__graph_8cpp.html#ac3ef62920e5b4df04a4b81489aacc664" title=" " alt="" coords="115,252,278,277"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="406,187,350,215,286,242,248,254,246,249,284,237,348,210,404,183"/>
+<area shape="rect" id="Node000011" href="$test__graph_8cpp.html#a87c4bbb43e141d16aadf387d84e8f461" title=" " alt="" coords="127,302,266,342"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="420,190,362,241,325,268,287,292,262,304,259,299,284,288,322,263,359,236,417,186"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Program entry point." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="143,29,61,42,60,37,142,24"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="126,60,60,50,61,45,127,54"/>
+<area shape="rect" id="Node000006" href="$test__output_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,153,60,179"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="134,136,109,143,61,159,59,154,107,138,133,131"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="109,169,60,169,60,163,109,163"/>
+<area shape="poly" id="edge10_Node000008_Node000006" title=" " alt="" coords="137,201,107,193,59,177,61,172,109,187,138,196"/>
+<area shape="rect" id="Node000010" href="$test__graph_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,280,60,305"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="109,282,61,291,60,285,108,277"/>
+<area shape="poly" id="edge14_Node000011_Node000010" title=" " alt="" coords="113,310,60,300,61,295,114,305"/>
+</map>

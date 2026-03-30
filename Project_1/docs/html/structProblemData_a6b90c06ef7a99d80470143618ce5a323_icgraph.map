@@ -1,0 +1,19 @@
+<map id="ProblemData::hasEnoughCapacity" name="ProblemData::hasEnoughCapacity">
+<area shape="rect" id="Node000001" title="Quick sanity check: is total reviewer capacity sufficient?" alt="" coords="524,80,767,105"/>
+<area shape="rect" id="Node000002" href="$test__domain_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="345,5,400,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="591,78,475,45,399,26,401,21,477,39,592,73"/>
+<area shape="rect" id="Node000003" href="$classOutputWriter.html#a723990a687c6d2154467c3cde0a642b0" title="Prints a summary of the problem data (for menu option)." alt="" coords="269,55,476,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="510,83,476,80,476,74,510,77"/>
+<area shape="rect" id="Node000006" href="$test__parser_8cpp.html#ae241a9fb68c40ec0bc4d3137195d5cce" title=" " alt="" coords="301,104,444,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="510,107,444,113,444,108,510,102"/>
+<area shape="rect" id="Node000008" href="$test__graph_8cpp.html#aca441d5ebe3894bca1449f02e0fd8e48" title=" " alt="" coords="326,153,419,179"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="591,112,477,145,420,158,419,153,475,139,589,107"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#aef0bcc404dd408e438ce7fa09e4ea3f7" title="Executes the program in interactive mode." alt="" coords="108,55,221,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="256,70,221,70,221,65,256,65"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Program entry point." alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
+<area shape="rect" id="Node000007" href="$test__parser_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="137,104,192,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="288,119,192,119,192,114,288,114"/>
+<area shape="rect" id="Node000009" href="$test__graph_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="137,153,192,179"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="312,169,192,169,192,163,312,163"/>
+</map>

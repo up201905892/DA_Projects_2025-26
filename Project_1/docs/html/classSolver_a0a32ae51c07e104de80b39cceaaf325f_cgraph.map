@@ -1,0 +1,7 @@
+<map id="Solver::findMatchedDomain" name="Solver::findMatchedDomain">
+<area shape="rect" id="Node000001" title="Determines which domain code caused the match between a reviewer and submission." alt="" coords="5,31,208,56"/>
+<area shape="rect" id="Node000002" href="$structConfig.html#a89db87ddce24e353ccabde8d0dc70ade" title="Determines if reviewer secondary expertise should be used in matching." alt="" coords="263,5,486,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,31,250,27,250,32,209,36"/>
+<area shape="rect" id="Node000003" href="$structConfig.html#a936e7b5bd16f50374b648f00465f1a32" title="Determines if submission secondary domains should be used in matching." alt="" coords="256,55,493,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,50,243,53,242,58,208,55"/>
+</map>

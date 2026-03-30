@@ -1,0 +1,40 @@
+<map id="Parser::parse" name="Parser::parse">
+<area shape="rect" id="Node000001" title="Parses the input file and returns a fully populated ProblemData." alt="" coords="5,205,112,230"/>
+<area shape="rect" id="Node000002" href="$classParser.html#abe415229c2daa3f3ba4efd44661bd703" title="Parses a control line: &quot;KeyName, value&quot;." alt="" coords="174,129,354,154"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,202,159,171,204,156,206,161,161,176,88,207"/>
+<area shape="rect" id="Node000005" href="$classParser.html#a113f0dfba3013e3dade8b717063ad8a0" title="Trims leading and trailing whitespace from a string." alt="" coords="707,29,805,54"/>
+<area shape="poly" id="edge24_Node000001_Node000005" title=" " alt="" coords="68,203,105,160,130,136,158,114,225,73,280,47,339,29,416,13,476,5,523,3,631,13,694,24,693,29,630,19,523,9,476,10,416,19,340,34,282,52,227,78,162,118,134,140,109,164,72,206"/>
+<area shape="rect" id="Node000007" href="$classParser.html#a381845570bc3e8444268d1f0165e5c18" title="Converts a string to lowercase (for case&#45;insensitive comparison)." alt="" coords="462,179,585,205"/>
+<area shape="poly" id="edge23_Node000001_Node000007" title=" " alt="" coords="112,212,448,193,448,199,112,217"/>
+<area shape="rect" id="Node000009" href="$classParser.html#a49fdbc3e3b2c220e042d77ea0568bdba" title="Parses a parameter line: &quot;KeyName, value&quot;." alt="" coords="164,230,364,255"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="113,221,151,226,150,231,112,227"/>
+<area shape="rect" id="Node000011" href="$classParser.html#a8b52e53cfc75a57e18f03d925823fe2a" title="Parses a single reviewer line." alt="" coords="167,442,361,467"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="71,229,109,284,162,353,240,431,236,434,158,356,104,287,66,232"/>
+<area shape="rect" id="Node000013" href="$classParser.html#ab15bc67b738ede92f26a5ead4c294bd3" title="Parses a single submission line." alt="" coords="160,317,368,342"/>
+<area shape="poly" id="edge19_Node000001_Node000013" title=" " alt="" coords="85,228,229,308,226,312,82,233"/>
+<area shape="rect" id="Node000003" href="$classParser.html#a54de14fb280b60a07adfbf68c508b767" title="Parses a trimmed token as an integer with error context." alt="" coords="679,329,833,354"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,126,406,121,482,123,559,136,597,148,632,164,673,197,706,237,731,279,747,315,743,317,726,282,702,240,670,200,629,169,595,153,558,141,481,128,407,126,341,131"/>
+<area shape="rect" id="Node000004" href="$classParser.html#aacf502fa084a101374bda3681e0d23bb" title="Splits a CSV line by commas, respecting double&#45;quoted fields." alt="" coords="461,278,585,303"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="286,152,370,215,393,242,402,254,417,264,449,277,447,282,415,269,399,257,389,246,366,219,283,156"/>
+<area shape="rect" id="Node000006" href="$classParser.html#a52df5c3f8fc72a8a486ae35a61d764d1" title="Removes surrounding double quotes from a string value." alt="" coords="451,29,596,54"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="285,126,343,95,415,63,440,55,442,60,417,68,345,100,288,131"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="331,152,449,175,448,180,330,157"/>
+<area shape="rect" id="Node000008" href="$domain_8h.html#a0e806904288551ac6c43e2d413164657" title="Converts an integer from the input file to a MatchMode." alt="" coords="468,78,579,103"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="330,126,454,101,455,107,331,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="585,283,608,276,629,265,653,244,674,219,707,164,731,111,745,67,751,68,736,112,712,167,678,222,657,247,632,269,610,281,586,288"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="596,39,693,39,693,44,596,44"/>
+<area shape="poly" id="edge12_Node000009_Node000003" title=" " alt="" coords="287,253,344,285,380,301,417,313,480,327,546,336,665,341,665,346,545,341,480,332,415,319,378,306,341,290,284,258"/>
+<area shape="poly" id="edge13_Node000009_Node000004" title=" " alt="" coords="334,253,448,274,447,279,333,258"/>
+<area shape="poly" id="edge14_Node000009_Node000007" title=" " alt="" coords="330,227,448,204,449,209,331,233"/>
+<area shape="rect" id="Node000010" href="$classParser.html#ac9cbf2eac7c906d2da2d95b9c16cc02e" title="Parses a trimmed token as a boolean (0 or 1)." alt="" coords="440,229,607,254"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="364,240,426,239,426,245,364,245"/>
+<area shape="poly" id="edge11_Node000010_Node000003" title=" " alt="" coords="593,252,632,264,684,290,727,318,725,323,681,295,630,269,591,257"/>
+<area shape="poly" id="edge17_Node000011_Node000003" title=" " alt="" coords="309,465,373,479,455,489,499,490,544,487,588,479,630,466,664,445,694,419,738,364,742,367,698,422,667,450,632,470,589,485,545,493,499,496,455,495,372,484,307,470"/>
+<area shape="poly" id="edge18_Node000011_Node000004" title=" " alt="" coords="284,440,489,309,492,313,287,444"/>
+<area shape="rect" id="Node000012" href="$structProblemData.html#a9f9c5ab24ac824b060f3cdb7bbd764bf" title="Adds a reviewer with duplicate&#45;ID detection." alt="" coords="423,531,623,557"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="298,465,417,510,465,525,464,530,415,515,296,470"/>
+<area shape="poly" id="edge21_Node000013_Node000003" title=" " alt="" coords="315,339,416,357,523,364,630,357,669,353,670,359,631,363,523,369,416,363,314,345"/>
+<area shape="poly" id="edge22_Node000013_Node000004" title=" " alt="" coords="349,314,447,299,448,305,350,319"/>
+<area shape="rect" id="Node000014" href="$structProblemData.html#a849ef6ded60771bec2a5e1b6faf0545c" title="Adds a submission with duplicate&#45;ID detection." alt="" coords="416,430,631,455"/>
+<area shape="poly" id="edge20_Node000013_Node000014" title=" " alt="" coords="287,340,344,373,417,408,460,424,458,429,415,413,342,378,284,344"/>
+</map>

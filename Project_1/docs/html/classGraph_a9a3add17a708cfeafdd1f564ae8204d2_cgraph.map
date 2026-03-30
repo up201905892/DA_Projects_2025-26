@@ -1,0 +1,5 @@
+<map id="Graph::restoreFrom" name="Graph::restoreFrom">
+<area shape="rect" id="Node000001" title="Restores all edge capacities from saved originals." alt="" coords="5,5,153,31"/>
+<area shape="rect" id="Node000002" href="$classGraph.html#a0a3f35d90f69456655a046806c725063" title="Returns the number of nodes in the graph." alt="" coords="201,5,340,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,15,187,15,187,21,154,21"/>
+</map>

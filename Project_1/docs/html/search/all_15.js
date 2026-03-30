@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['para_20atribuição_20básica_20max_20flow_0',['T2.1 — Modelagem do Grafo para Atribuição Básica (Max-Flow)',['../md_T2__1__Graph__Modeling.html',1,'']]],
+  ['para_20nós_20no_20grafo_1',['4. Mapeamento de IDs para Nós no Grafo',['..//home/miguel/DA/DA_Projects_2025-26/Project_1/T2_1_Graph_Modeling.md#autotoc_md28',1,'']]],
+  ['parameters_2',['PARAMETERS',['../classParser.html#af6dbc5fa557e14a25ab4eddef5edeaadaeb178264802ebbd52cccc8feadb72a6f',1,'Parser']]],
+  ['parse_3',['parse',['../classParser.html#a5a2a7fa051b2dce0c67484fcb141d913',1,'Parser']]],
+  ['parseboolfield_4',['parseBoolField',['../classParser.html#ac9cbf2eac7c906d2da2d95b9c16cc02e',1,'Parser']]],
+  ['parsecontrolline_5',['parseControlLine',['../classParser.html#abe415229c2daa3f3ba4efd44661bd703',1,'Parser']]],
+  ['parseerror_6',['parseerror',['../classParseError.html',1,'ParseError'],['../classParseError.html#a704f5c5285cb433cfaa86a156f944dab',1,'ParseError::ParseError()']]],
+  ['parseintfield_7',['parseIntField',['../classParser.html#a54de14fb280b60a07adfbf68c508b767',1,'Parser']]],
+  ['parseparameterline_8',['parseParameterLine',['../classParser.html#a49fdbc3e3b2c220e042d77ea0568bdba',1,'Parser']]],
+  ['parser_9',['Parser',['../classParser.html',1,'']]],
+  ['parser_2eh_10',['parser.h',['../parser_8h.html',1,'']]],
+  ['parsereviewerline_11',['parseReviewerLine',['../classParser.html#a8b52e53cfc75a57e18f03d925823fe2a',1,'Parser']]],
+  ['parsesubmissionline_12',['parseSubmissionLine',['../classParser.html#ab15bc67b738ede92f26a5ead4c294bd3',1,'Parser']]],
+  ['partir_20do_20fluxo_13',['2.4 Extração da Atribuição a partir do Fluxo',['..//home/miguel/DA/DA_Projects_2025-26/Project_1/T2_1_Graph_Modeling.md#autotoc_md20',1,'']]],
+  ['porque_20o_20max_20flow_20resolve_20este_20problema_14',['2.1 Porque o Max-Flow resolve este problema',['..//home/miguel/DA/DA_Projects_2025-26/Project_1/T2_1_Graph_Modeling.md#autotoc_md17',1,'']]],
+  ['primary_5fonly_15',['PRIMARY_ONLY',['../domain_8h.html#aaadee7c45d751f3a6f6abc9cfd05d2f0aa11a38b780db1a59973d7f3a270ce2aa',1,'domain.h']]],
+  ['primarydomain_16',['primaryDomain',['../structSubmission.html#a6885d2e13482230719345b52b56d69a7',1,'Submission']]],
+  ['primaryexpertise_17',['primaryExpertise',['../structReviewer.html#ae4b98f3b4e57b42bebd6f70a28a3fee1',1,'Reviewer']]],
+  ['primaryreviewerexpertise_18',['primaryReviewerExpertise',['../structConfig.html#a325e4594d6598098e102374f9fc0afee',1,'Config']]],
+  ['primarysubmissiondomain_19',['primarySubmissionDomain',['../structConfig.html#a589c377a84321d0fbce17a087bcc50a3',1,'Config']]],
+  ['printsummary_20',['printSummary',['../classOutputWriter.html#a723990a687c6d2154467c3cde0a642b0',1,'OutputWriter']]],
+  ['printtoconsole_21',['printToConsole',['../classOutputWriter.html#a1479597905031ccc3f547b1d5265ac52',1,'OutputWriter']]],
+  ['problema_22',['problema',['../md_T2__1__Graph__Modeling.html#autotoc_md2',1,'1.1 Definição Formal do Problema'],['..//home/miguel/DA/DA_Projects_2025-26/Project_1/T2_1_Graph_Modeling.md#autotoc_md17',1,'2.1 Porque o Max-Flow resolve este problema']]],
+  ['problemdata_23',['ProblemData',['../structProblemData.html',1,'']]],
+  ['provas_20de_20correção_24',['6. Invariantes e Provas de Correção',['..//home/miguel/DA/DA_Projects_2025-26/Project_1/T2_1_Graph_Modeling.md#autotoc_md38',1,'']]]
+];

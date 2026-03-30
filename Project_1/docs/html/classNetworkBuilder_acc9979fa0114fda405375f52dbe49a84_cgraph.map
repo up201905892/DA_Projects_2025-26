@@ -1,0 +1,5 @@
+<map id="NetworkBuilder::isCompatible" name="NetworkBuilder::isCompatible">
+<area shape="rect" id="Node000001" title="Determines if a reviewer can review a submission based on domain matching." alt="" coords="5,5,223,31"/>
+<area shape="rect" id="Node000002" href="$structSubmission.html#a19ab1b3a6dc11bd0b8254be4cbc31d2d" title="Checks if this submission covers the given domain." alt="" coords="271,5,449,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,15,257,15,257,21,223,21"/>
+</map>

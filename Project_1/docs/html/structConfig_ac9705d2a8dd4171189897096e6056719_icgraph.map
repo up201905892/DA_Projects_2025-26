@@ -1,0 +1,29 @@
+<map id="Config::shouldAnalyzeRisk" name="Config::shouldAnalyzeRisk">
+<area shape="rect" id="Node000001" title="Whether risk analysis should be performed." alt="" coords="592,56,787,81"/>
+<area shape="rect" id="Node000002" href="$classOutputWriter.html#a1479597905031ccc3f547b1d5265ac52" title="Prints the assignment results to the console." alt="" coords="333,5,544,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="612,56,502,33,503,28,613,51"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html#adccc9f5ff7d7a84b4f757ddc2e00c25b" title="Executes the program in batch mode." alt="" coords="157,55,237,80"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="578,71,237,70,237,65,578,66"/>
+<area shape="rect" id="Node000006" href="$classOutputWriter.html#a293621b584934c41795c2ada849f90eb" title="Writes the complete assignment output to a file." alt="" coords="347,107,531,132"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="613,87,503,109,502,104,612,82"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#aef0bcc404dd408e438ce7fa09e4ea3f7" title="Executes the program in interactive mode." alt="" coords="140,5,253,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="320,21,254,21,254,15,320,15"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Program entry point." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="127,31,61,42,60,37,126,26"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="142,62,60,50,60,45,143,57"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="403,102,348,73,284,44,250,33,252,28,286,40,350,68,405,97"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="365,106,236,78,237,73,366,101"/>
+<area shape="rect" id="Node000007" href="$test__output_8cpp.html#ad98b96469ee1c28ab8390957efbc52e5" title=" " alt="" coords="108,104,285,129"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="333,121,286,120,286,115,333,116"/>
+<area shape="rect" id="Node000009" href="$test__output_8cpp.html#ae22f862265d01c0acb3649c247f4a726" title=" " alt="" coords="123,153,271,179"/>
+<area shape="poly" id="edge11_Node000006_Node000009" title=" " alt="" coords="359,137,264,156,263,151,358,132"/>
+<area shape="rect" id="Node000010" href="$test__output_8cpp.html#a998d4d57520dc3729aada36d40d97db9" title=" " alt="" coords="123,203,271,228"/>
+<area shape="poly" id="edge13_Node000006_Node000010" title=" " alt="" coords="402,141,348,167,286,192,248,205,246,200,284,188,346,162,400,136"/>
+<area shape="rect" id="Node000011" href="$test__output_8cpp.html#aaa716ae6efa6c8bef11ea699a4be56d2" title=" " alt="" coords="125,252,269,277"/>
+<area shape="poly" id="edge15_Node000006_Node000011" title=" " alt="" coords="417,143,361,193,325,220,287,243,258,254,256,249,284,238,322,216,358,189,414,139"/>
+<area shape="rect" id="Node000008" href="$test__output_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,177,60,203"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="126,136,109,143,78,161,52,179,49,175,75,156,107,138,124,131"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="109,182,61,189,60,183,108,176"/>
+<area shape="poly" id="edge14_Node000010_Node000008" title=" " alt="" coords="108,204,60,197,61,191,109,199"/>
+<area shape="poly" id="edge16_Node000011_Node000008" title=" " alt="" coords="124,250,107,243,75,225,48,205,51,201,77,220,109,238,126,245"/>
+</map>

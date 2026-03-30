@@ -1,0 +1,13 @@
+<map id="OutputWriter::printToConsole" name="OutputWriter::printToConsole">
+<area shape="rect" id="Node000001" title="Prints the assignment results to the console." alt="" coords="5,63,216,88"/>
+<area shape="rect" id="Node000002" href="$structConfig.html#ac9705d2a8dd4171189897096e6056719" title="Whether risk analysis should be performed." alt="" coords="279,5,473,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,60,303,31,304,36,171,65"/>
+<area shape="rect" id="Node000003" href="$classOutputWriter.html#a6e32add7759c83e565390d14cd1bb339" title="Writes the assignment sections to any output stream." alt="" coords="264,55,488,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,73,250,73,250,78,216,78"/>
+<area shape="rect" id="Node000006" href="$classOutputWriter.html#a33523f8610417f2806d5943455614a14" title="Writes the risk analysis section to any output stream." alt="" coords="265,120,487,145"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="171,85,304,114,303,120,170,91"/>
+<area shape="rect" id="Node000004" href="$structSolverResult.html#a4d56c0d5a4628962604d1c204e1d530c" title="Whether the assignment is fully satisfied." alt="" coords="556,39,743,64"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="488,63,542,58,543,63,488,68"/>
+<area shape="rect" id="Node000005" href="$structProblemData.html#af8f49cc7cddaa7219f2a6f3bc9853474" title="Number of submissions." alt="" coords="536,88,763,113"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="488,83,523,86,522,92,488,88"/>
+</map>

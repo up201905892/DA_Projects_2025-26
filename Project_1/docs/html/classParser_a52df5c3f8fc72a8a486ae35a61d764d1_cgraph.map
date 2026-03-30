@@ -1,0 +1,5 @@
+<map id="Parser::stripQuotes" name="Parser::stripQuotes">
+<area shape="rect" id="Node000001" title="Removes surrounding double quotes from a string value." alt="" coords="5,5,151,31"/>
+<area shape="rect" id="Node000002" href="$classParser.html#a113f0dfba3013e3dade8b717063ad8a0" title="Trims leading and trailing whitespace from a string." alt="" coords="199,5,296,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,15,185,15,185,21,151,21"/>
+</map>

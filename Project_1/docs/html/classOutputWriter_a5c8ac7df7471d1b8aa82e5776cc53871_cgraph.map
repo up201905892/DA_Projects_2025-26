@@ -1,0 +1,5 @@
+<map id="OutputWriter::writeRiskToFile" name="OutputWriter::writeRiskToFile">
+<area shape="rect" id="Node000001" title="Writes the risk analysis results to a separate file." alt="" coords="5,5,217,31"/>
+<area shape="rect" id="Node000002" href="$classOutputWriter.html#a33523f8610417f2806d5943455614a14" title="Writes the risk analysis section to any output stream." alt="" coords="265,5,488,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,15,251,15,251,21,218,21"/>
+</map>

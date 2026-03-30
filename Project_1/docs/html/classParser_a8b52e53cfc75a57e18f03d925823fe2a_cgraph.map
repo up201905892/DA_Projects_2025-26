@@ -1,0 +1,11 @@
+<map id="Parser::parseReviewerLine" name="Parser::parseReviewerLine">
+<area shape="rect" id="Node000001" title="Parses a single reviewer line." alt="" coords="5,55,200,80"/>
+<area shape="rect" id="Node000002" href="$structProblemData.html#a9f9c5ab24ac824b060f3cdb7bbd764bf" title="Adds a reviewer with duplicate&#45;ID detection." alt="" coords="248,5,448,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,52,270,31,271,36,167,57"/>
+<area shape="rect" id="Node000003" href="$classParser.html#a54de14fb280b60a07adfbf68c508b767" title="Parses a trimmed token as an integer with error context." alt="" coords="271,55,425,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,65,257,65,257,70,200,70"/>
+<area shape="rect" id="Node000004" href="$classParser.html#aacf502fa084a101374bda3681e0d23bb" title="Splits a CSV line by commas, respecting double&#45;quoted fields." alt="" coords="286,104,410,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,77,273,99,272,104,166,83"/>
+<area shape="rect" id="Node000005" href="$classParser.html#a113f0dfba3013e3dade8b717063ad8a0" title="Trims leading and trailing whitespace from a string." alt="" coords="496,104,593,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="410,114,482,114,482,119,410,119"/>
+</map>
