@@ -1,0 +1,3 @@
+# Free (DSATUR) allocation
+registers: 2
+algorithm: free

@@ -1,0 +1,6 @@
+# Overlapping ranges for variable x -> should merge into 1 web
+# x: 1-5 and x: 4-8 share line 4,5 -> merge to web 1+,2,3,4,5,6,7,8-
+x: 1+,2,3,4,5-
+x: 4+,5,6,7,8-
+# y lives at 3-6
+y: 3+,4,5,6-

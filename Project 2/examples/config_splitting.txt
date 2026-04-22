@@ -1,0 +1,3 @@
+# Try splitting to fit tight ranges into 2 registers
+registers: 2
+algorithm: splitting, 2

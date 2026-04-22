@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(g++ -std=c++17 -Wall -Wextra -O2 -fno-inline -o myProg main.cpp Parser.cpp Graph.cpp Allocator.cpp)",
+      "Bash(./myProg -b examples/ranges_basic.txt examples/config_basic.txt /tmp/out_basic.txt)",
+      "Read(//tmp/**)",
+      "Bash(./myProg -b examples/ranges_basic.txt examples/config_spilling.txt /tmp/out_spill.txt)",
+      "Bash(./myProg -b examples/ranges_tight.txt examples/config_basic_fail.txt /tmp/out_fail.txt)",
+      "Bash(./myProg -b examples/ranges_tight.txt examples/config_splitting.txt /tmp/out_split.txt)",
+      "Bash(./myProg -b examples/ranges_basic.txt examples/config_free.txt /tmp/out_free.txt)",
+      "Bash(g++ -std=c++17 -g -fsanitize=address,undefined -o myProg_asan main.cpp Parser.cpp Graph.cpp Allocator.cpp)",
+      "Bash(./myProg_asan -b examples/ranges_tight.txt examples/config_splitting.txt /tmp/out_split.txt)",
+      "Bash(g++ -std=c++17 -g -o myProg_dbg main.cpp Parser.cpp Graph.cpp Allocator.cpp)",
+      "Bash(./myProg_dbg -b examples/ranges_tight.txt examples/config_splitting.txt /tmp/out_split.txt)",
+      "Bash(./myProg -b examples/ranges_overlap.txt examples/config_basic.txt /tmp/out_overlap.txt)",
+      "Bash(./myProg)"
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+# Spilling with 1 register, allow 1 spill
+registers: 1
+algorithm: spilling, 1
