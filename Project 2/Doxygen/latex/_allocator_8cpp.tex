@@ -1,0 +1,98 @@
+\doxysection{Allocator.\+cpp File Reference}
+\hypertarget{_allocator_8cpp}{}\label{_allocator_8cpp}\index{Allocator.cpp@{Allocator.cpp}}
+
+
+Implementation of register allocation algorithms.  
+
+
+{\ttfamily \+\#include "{}Allocator.\+h"{}}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$map$>$}\newline
+{\ttfamily \+\#include $<$set$>$}\newline
+{\ttfamily \+\#include $<$stack$>$}\newline
+{\ttfamily \+\#include $<$stdexcept$>$}\newline
+{\ttfamily \+\#include $<$numeric$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{_allocator_8cpp_ab96ad289b764f9d9cc193ce088d60502}{write\+Output}} (const std::\+string \&filename, const std::\+vector$<$ \doxymbox{\hyperlink{struct_web}{Web}} $>$ \&webs, const \doxymbox{\hyperlink{struct_allocation_result}{Allocation\+Result}} \&result, int num\+Registers)
+\begin{DoxyCompactList}\small\item\em Write the allocation result to an output file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of register allocation algorithms. 
+
+
+
+\label{_allocator_8cpp_doc-func-members}
+\Hypertarget{_allocator_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_allocator_8cpp_ab96ad289b764f9d9cc193ce088d60502}\index{Allocator.cpp@{Allocator.cpp}!writeOutput@{writeOutput}}
+\index{writeOutput@{writeOutput}!Allocator.cpp@{Allocator.cpp}}
+\doxysubsubsection{\texorpdfstring{writeOutput()}{writeOutput()}}
+{\footnotesize\ttfamily \label{_allocator_8cpp_ab96ad289b764f9d9cc193ce088d60502} 
+void write\+Output (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{struct_web}{Web}} $>$ \&}]{webs}{, }\item[{const \doxymbox{\hyperlink{struct_allocation_result}{Allocation\+Result}} \&}]{result}{, }\item[{int}]{num\+Registers}{}\end{DoxyParamCaption})}
+
+
+
+Write the allocation result to an output file. 
+
+Write allocation result to a file.
+
+The output format follows the project statement. For spilling and splitting, extra metadata is appended in a simple line-\/based format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Output file path. \\
+\hline
+{\em webs} & Vector of webs. \\
+\hline
+{\em result} & Allocation result. \\
+\hline
+{\em num\+Registers} & Number of registers available in the input configuration. This parameter is kept for compatibility, but the output prints result.\+registers\+Used.\\
+\hline
+\end{DoxyParams}
+@complexity O(W + A + M), where W is the number of webs, A is the number of register assignments, and M is the amount of metadata written.
+
+Write the allocation result to an output file.
+
+Format:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{webs:\ W}
+\DoxyCodeLine{web0:\ <ranges>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{registers:\ R}
+\DoxyCodeLine{r0:\ webX}
+\DoxyCodeLine{...}
+\DoxyCodeLine{M:\ webY}
+
+\end{DoxyCode}
+
+
+For alternative algorithms, additional processing-\/friendly metadata may be appended, for example:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#\ algorithm\ metadata}}
+\DoxyCodeLine{algorithm:\ spilling}
+\DoxyCodeLine{spill\_budget:\ 2}
+\DoxyCodeLine{spilled\_webs:\ 1}
+\DoxyCodeLine{spilled:\ web3}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Output file path. \\
+\hline
+{\em webs} & \doxylink{struct_web}{Web} vector. \\
+\hline
+{\em result} & Allocation result. \\
+\hline
+{\em num\+Registers} & Number of registers from configuration. Kept for compatibility; result.\+registers\+Used is printed.\\
+\hline
+\end{DoxyParams}
+@complexity O(W + A), where W is the number of webs and A is the number of assignments written. 

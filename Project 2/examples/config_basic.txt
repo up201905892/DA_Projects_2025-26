@@ -1,3 +1,0 @@
-# Basic allocation with 2 registers
-registers: 2
-algorithm: basic

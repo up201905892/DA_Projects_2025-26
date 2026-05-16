@@ -1,3 +1,0 @@
-# Only 2 registers but need 4 — basic should fail
-registers: 2
-algorithm: basic

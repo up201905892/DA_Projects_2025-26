@@ -1,0 +1,59 @@
+\doxysection{Parser.\+h}
+\hypertarget{_parser_8h_source}{}\label{_parser_8h_source}\doxymbox{\hyperlink{_parser_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Data\ types}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_live_range}{LiveRange}}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_live_range_a17d98a53ee8886e5006903bdbb6ca51e}{start}}\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_live_range_a1b20bc0723e2f31020def3b7a98a8214}{end}}\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_live_range_a2cb3b7495ecac01b0683ea179f0d9e28}{hasStartMarker}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_live_range_aca120cd556ae09315d4c85ed70eca090}{hasEndMarker}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<int>\ \doxymbox{\hyperlink{struct_live_range_a3f3d8ef259b98cb711d36f29b920da7b}{intermediate}};\ \ \ }
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_range_entry}{RangeEntry}}\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_range_entry_a977ce7a193d34feb25475b0d4a258959}{varName}};\ }
+\DoxyCodeLine{00047\ \ \ \ \ \doxymbox{\hyperlink{struct_live_range}{LiveRange}}\ \doxymbox{\hyperlink{struct_range_entry_a760a4b5d15f5170e2d6ccfcac32e94a4}{range}};\ \ \ \ \ }
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{enum\ class}\ \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9}{AlgorithmType}}\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ae4ac03f6c9f00665644e868dd1fb9f1e}{BASIC}},\ \ \ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9a081fb39ab31dcddab14b6c19790186b3}{SPILLING}},\ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ac7daf351eb03c767f38f7fe9d632c59c}{SPLITTING}},\ }
+\DoxyCodeLine{00057\ \ \ \ \ \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9a88c189a42c87aa49d667fc8ab76bc323}{FREE}}\ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_alloc_config}{AllocConfig}}\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_alloc_config_a2c15cadd8904fbef4c04d1f37e45c767}{numRegisters}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9}{AlgorithmType}}\ \doxymbox{\hyperlink{struct_alloc_config_a1a9942cacb9900b6dbd551a10a142133}{type}}\ =\ \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ae4ac03f6c9f00665644e868dd1fb9f1e}{AlgorithmType::BASIC}};\ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_alloc_config_a31763493c104fa4c0e21a9eed070ae3e}{K}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ Parser\ class}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_parser}{Parser}}\ \{}
+\DoxyCodeLine{00080\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<RangeEntry>\ \doxymbox{\hyperlink{class_parser_a81b51e70d7f8227de9e8f257e6b0b399}{parseRanges}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{struct_alloc_config}{AllocConfig}}\ \doxymbox{\hyperlink{class_parser_adf5ad2c402d556280f79045f2dec54c1}{parseConfig}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ splitComma(\textcolor{keyword}{const}\ std::string\&\ s);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ trim(\textcolor{keyword}{const}\ std::string\&\ s);}
+\DoxyCodeLine{00128\ \};}
+
+\end{DoxyCode}

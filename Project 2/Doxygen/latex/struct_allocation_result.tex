@@ -1,0 +1,115 @@
+\doxysection{Allocation\+Result Struct Reference}
+\hypertarget{struct_allocation_result}{}\label{struct_allocation_result}\index{AllocationResult@{AllocationResult}}
+
+
+Result of a register allocation attempt.  
+
+
+
+
+{\ttfamily \+\#include $<$Allocator.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{struct_allocation_result_a936eb75c39932bf369325a842c007bc0}{success}} = false
+\begin{DoxyCompactList}\small\item\em true if allocation is acceptable \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{struct_allocation_result_ad2745bf126a525f87be4ea94e99d393a}{registers\+Used}} = 0
+\begin{DoxyCompactList}\small\item\em highest register index used + 1 \end{DoxyCompactList}\item 
+std::\+vector$<$ int $>$ \doxymbox{\hyperlink{struct_allocation_result_adcba6aaa624efd528d41b6142a4f8366}{colors}}
+\begin{DoxyCompactList}\small\item\em color/\+register per web \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9}{Algorithm\+Type}} \doxymbox{\hyperlink{struct_allocation_result_a7b43930ed52bffe72a53adad8ffe11ba}{algorithm}} = \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ae4ac03f6c9f00665644e868dd1fb9f1e}{Algorithm\+Type::\+\+BASIC}}
+\begin{DoxyCompactList}\small\item\em algorithm used \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{struct_allocation_result_a227468ac30d58eb0fc996132f2af8423}{K}} = 0
+\begin{DoxyCompactList}\small\item\em spilling/\+splitting budget \end{DoxyCompactList}\item 
+std::\+vector$<$ int $>$ \doxymbox{\hyperlink{struct_allocation_result_a65859642e8901d5d263be2c5d5e1fb3b}{spilled\+Webs}}
+\begin{DoxyCompactList}\small\item\em ids of webs assigned to memory \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_split_record}{Split\+Record}} $>$ \doxymbox{\hyperlink{struct_allocation_result_a0a01856caf7e0298e5852bf8b87c80e6}{split\+Records}}
+\begin{DoxyCompactList}\small\item\em split operations performed \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Result of a register allocation attempt. 
+
+colors\+[i]\+ holds the register index (0..N-\/1) for web i, or SPILL\+\_\+\+COLOR (-\/1) if web i was assigned to memory.
+
+spilled\+Webs and split\+Records are complementary metadata used by the alternative algorithms. They make the output more processing-\/friendly and easier to justify in the project presentation. 
+
+\label{struct_allocation_result_doc-variable-members}
+\Hypertarget{struct_allocation_result_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_allocation_result_a7b43930ed52bffe72a53adad8ffe11ba}\index{AllocationResult@{AllocationResult}!algorithm@{algorithm}}
+\index{algorithm@{algorithm}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{algorithm}{algorithm}}
+{\footnotesize\ttfamily \label{struct_allocation_result_a7b43930ed52bffe72a53adad8ffe11ba} 
+\doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9}{Algorithm\+Type}} Allocation\+Result::\+algorithm = \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ae4ac03f6c9f00665644e868dd1fb9f1e}{Algorithm\+Type::\+\+BASIC}}}
+
+
+
+algorithm used 
+
+\Hypertarget{struct_allocation_result_adcba6aaa624efd528d41b6142a4f8366}\index{AllocationResult@{AllocationResult}!colors@{colors}}
+\index{colors@{colors}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{colors}{colors}}
+{\footnotesize\ttfamily \label{struct_allocation_result_adcba6aaa624efd528d41b6142a4f8366} 
+std::\+vector$<$int$>$ Allocation\+Result::\+colors}
+
+
+
+color/\+register per web 
+
+\Hypertarget{struct_allocation_result_a227468ac30d58eb0fc996132f2af8423}\index{AllocationResult@{AllocationResult}!K@{K}}
+\index{K@{K}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{K}{K}}
+{\footnotesize\ttfamily \label{struct_allocation_result_a227468ac30d58eb0fc996132f2af8423} 
+int Allocation\+Result::\+K = 0}
+
+
+
+spilling/\+splitting budget 
+
+\Hypertarget{struct_allocation_result_ad2745bf126a525f87be4ea94e99d393a}\index{AllocationResult@{AllocationResult}!registersUsed@{registersUsed}}
+\index{registersUsed@{registersUsed}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{registersUsed}{registersUsed}}
+{\footnotesize\ttfamily \label{struct_allocation_result_ad2745bf126a525f87be4ea94e99d393a} 
+int Allocation\+Result::\+registers\+Used = 0}
+
+
+
+highest register index used + 1 
+
+\Hypertarget{struct_allocation_result_a65859642e8901d5d263be2c5d5e1fb3b}\index{AllocationResult@{AllocationResult}!spilledWebs@{spilledWebs}}
+\index{spilledWebs@{spilledWebs}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{spilledWebs}{spilledWebs}}
+{\footnotesize\ttfamily \label{struct_allocation_result_a65859642e8901d5d263be2c5d5e1fb3b} 
+std::\+vector$<$int$>$ Allocation\+Result::\+spilled\+Webs}
+
+
+
+ids of webs assigned to memory 
+
+\Hypertarget{struct_allocation_result_a0a01856caf7e0298e5852bf8b87c80e6}\index{AllocationResult@{AllocationResult}!splitRecords@{splitRecords}}
+\index{splitRecords@{splitRecords}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{splitRecords}{splitRecords}}
+{\footnotesize\ttfamily \label{struct_allocation_result_a0a01856caf7e0298e5852bf8b87c80e6} 
+std::\+vector$<$\doxymbox{\hyperlink{struct_split_record}{Split\+Record}}$>$ Allocation\+Result::\+split\+Records}
+
+
+
+split operations performed 
+
+\Hypertarget{struct_allocation_result_a936eb75c39932bf369325a842c007bc0}\index{AllocationResult@{AllocationResult}!success@{success}}
+\index{success@{success}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{success}{success}}
+{\footnotesize\ttfamily \label{struct_allocation_result_a936eb75c39932bf369325a842c007bc0} 
+bool Allocation\+Result::\+success = false}
+
+
+
+true if allocation is acceptable 
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_allocator_8h}{Allocator.\+h}}\end{DoxyCompactItemize}

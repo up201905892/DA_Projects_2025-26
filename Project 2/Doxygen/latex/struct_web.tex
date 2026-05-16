@@ -1,0 +1,144 @@
+\doxysection{Web Struct Reference}
+\hypertarget{struct_web}{}\label{struct_web}\index{Web@{Web}}
+
+
+A live web — the union of all overlapping live ranges for one variable.  
+
+
+
+
+{\ttfamily \+\#include $<$Graph.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{struct_web_ab9a2b009df6a4eab06b2bb13db94320d}{add\+Range}} (const \doxymbox{\hyperlink{struct_live_range}{Live\+Range}} \&lr)
+\begin{DoxyCompactList}\small\item\em Add a live range to this web and update its line set. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{struct_web_a86e81d9280bf2ca94baf28ee5da596a8}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Return a canonical string representation for output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{struct_web_af59e2bcb1907d91a75a5d2598e0eb1b6}{id}}
+\begin{DoxyCompactList}\small\item\em 0-\/based index in the webs vector \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{struct_web_a864d30608851a4e2e7ecd1aa39cb4304}{var\+Name}}
+\begin{DoxyCompactList}\small\item\em variable associated with this web \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_live_range}{Live\+Range}} $>$ \doxymbox{\hyperlink{struct_web_a58b19ff3d326f425392df7334a126b29}{ranges}}
+\begin{DoxyCompactList}\small\item\em constituent live ranges \end{DoxyCompactList}\item 
+std::\+set$<$ int $>$ \doxymbox{\hyperlink{struct_web_a049674097b5424e02f9db447b8d45bff}{lines}}
+\begin{DoxyCompactList}\small\item\em union of all live program points \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A live web — the union of all overlapping live ranges for one variable. 
+
+A web represents a value or group of connected values of the same variable whose live ranges intersect. Each web becomes a node in the interference graph. 
+
+\label{struct_web_doc-func-members}
+\Hypertarget{struct_web_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_web_ab9a2b009df6a4eab06b2bb13db94320d}\index{Web@{Web}!addRange@{addRange}}
+\index{addRange@{addRange}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{addRange()}{addRange()}}
+{\footnotesize\ttfamily \label{struct_web_ab9a2b009df6a4eab06b2bb13db94320d} 
+void Web::\+add\+Range (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_live_range}{Live\+Range}} \&}]{lr}{}\end{DoxyParamCaption})}
+
+
+
+Add a live range to this web and update its line set. 
+
+Add a live range to a web.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lr} & Live range to add. @complexity O(\+R log L), where R is the number of points in the range and L is the number of points already stored in the web.\\
+\hline
+\end{DoxyParams}
+The range is stored in the web and all its program points are inserted into the union line set used later for interference detection.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lr} & Live range to add. @complexity O(\+R log L), where R is the number of points in the range and L is the number of points already stored in the web. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{struct_web_a86e81d9280bf2ca94baf28ee5da596a8}\index{Web@{Web}!toString@{toString}}
+\index{toString@{toString}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{struct_web_a86e81d9280bf2ca94baf28ee5da596a8} 
+std::\+string Web::\+to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a canonical string representation for output. 
+
+Convert a web to the output format required by the statement.
+
+The output preserves marker information:\+
+\begin{DoxyItemize}
+\item \textquotesingle{}+\textquotesingle{} is printed only if the original range had a definition marker;
+\item \textquotesingle{}-\/\textquotesingle{} is printed only if the original range had a last-\/use marker.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+Human-\/readable representation of this web. @complexity O(\+L log L), where L is the total number of points in the web.
+\end{DoxyReturn}
+Marker information is preserved:\+
+\begin{DoxyItemize}
+\item \textquotesingle{}+\textquotesingle{} is printed only when the parsed range had an explicit start marker;
+\item \textquotesingle{}-\/\textquotesingle{} is printed only when the parsed range had an explicit end marker.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+String representation of the web. @complexity O(\+L log L), where L is the number of points in the web. 
+\end{DoxyReturn}
+
+
+\label{struct_web_doc-variable-members}
+\Hypertarget{struct_web_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_web_af59e2bcb1907d91a75a5d2598e0eb1b6}\index{Web@{Web}!id@{id}}
+\index{id@{id}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily \label{struct_web_af59e2bcb1907d91a75a5d2598e0eb1b6} 
+int Web::\+id}
+
+
+
+0-\/based index in the webs vector 
+
+\Hypertarget{struct_web_a049674097b5424e02f9db447b8d45bff}\index{Web@{Web}!lines@{lines}}
+\index{lines@{lines}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{lines}{lines}}
+{\footnotesize\ttfamily \label{struct_web_a049674097b5424e02f9db447b8d45bff} 
+std::\+set$<$int$>$ Web::\+lines}
+
+
+
+union of all live program points 
+
+\Hypertarget{struct_web_a58b19ff3d326f425392df7334a126b29}\index{Web@{Web}!ranges@{ranges}}
+\index{ranges@{ranges}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{ranges}{ranges}}
+{\footnotesize\ttfamily \label{struct_web_a58b19ff3d326f425392df7334a126b29} 
+std::\+vector$<$\doxymbox{\hyperlink{struct_live_range}{Live\+Range}}$>$ Web::\+ranges}
+
+
+
+constituent live ranges 
+
+\Hypertarget{struct_web_a864d30608851a4e2e7ecd1aa39cb4304}\index{Web@{Web}!varName@{varName}}
+\index{varName@{varName}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{varName}{varName}}
+{\footnotesize\ttfamily \label{struct_web_a864d30608851a4e2e7ecd1aa39cb4304} 
+std::\+string Web::\+var\+Name}
+
+
+
+variable associated with this web 
+
+
+
+The documentation for this struct was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_graph_8h}{Graph.\+h}}\item 
+\doxymbox{\hyperlink{_graph_8cpp}{Graph.\+cpp}}\end{DoxyCompactItemize}

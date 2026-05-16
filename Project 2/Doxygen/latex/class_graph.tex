@@ -1,0 +1,188 @@
+\doxysection{Graph Class Reference}
+\hypertarget{class_graph}{}\label{class_graph}\index{Graph@{Graph}}
+
+
+Undirected interference graph stored as an adjacency matrix.  
+
+
+
+
+{\ttfamily \+\#include $<$Graph.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_graph_a7b14c9bc0b5fbf50165aaf92f4aeef1d}{Graph}} (int n)
+\begin{DoxyCompactList}\small\item\em Construct an empty graph with n nodes. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_graph_ad8c10df34357b2cd865c81e0c4f0bd8c}{add\+Edge}} (int u, int v)
+\begin{DoxyCompactList}\small\item\em Add an undirected edge between two nodes. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_graph_ae69ac4d2194ed9acbe817ac70d89896d}{has\+Edge}} (int u, int v) const
+\begin{DoxyCompactList}\small\item\em Check whether an edge exists. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_graph_aa64b853e9f916fc07485040fa44fe252}{degree}} (int u, const std::\+set$<$ int $>$ \&active) const
+\begin{DoxyCompactList}\small\item\em Degree of node u considering only nodes in the active set. \end{DoxyCompactList}\item 
+std::\+vector$<$ int $>$ \doxymbox{\hyperlink{class_graph_a07588a96c3d0d9df83a7fc93b10c86c1}{neighbors}} (int u) const
+\begin{DoxyCompactList}\small\item\em Full neighbor set of node u. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_graph_a6539d03f6d3f42042196f0f79455bdd8}{size}} () const
+\begin{DoxyCompactList}\small\item\em Number of graph nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Undirected interference graph stored as an adjacency matrix. 
+
+Node indices correspond to web indices in the webs vector. An edge (u, v) means webs u and v cannot share the same register. 
+
+\label{class_graph_doc-constructors}
+\Hypertarget{class_graph_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_graph_a7b14c9bc0b5fbf50165aaf92f4aeef1d}\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily \label{class_graph_a7b14c9bc0b5fbf50165aaf92f4aeef1d} 
+Graph::\+\+Graph (\begin{DoxyParamCaption}\item[{int}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct an empty graph with n nodes. 
+
+Construct an empty undirected graph with n nodes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Number of graph nodes. @complexity O(n\texorpdfstring{$^\wedge$}{\string^}2), due to adjacency matrix allocation.\\
+\hline
+{\em n} & Number of nodes. @complexity O(n\texorpdfstring{$^\wedge$}{\string^}2). \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_graph_doc-func-members}
+\Hypertarget{class_graph_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_graph_ad8c10df34357b2cd865c81e0c4f0bd8c}\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily \label{class_graph_ad8c10df34357b2cd865c81e0c4f0bd8c} 
+void Graph::\+add\+Edge (\begin{DoxyParamCaption}\item[{int}]{u}{, }\item[{int}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Add an undirected edge between two nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & First node. \\
+\hline
+{\em v} & Second node. @complexity O(1). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_graph_aa64b853e9f916fc07485040fa44fe252}\index{Graph@{Graph}!degree@{degree}}
+\index{degree@{degree}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{degree()}{degree()}}
+{\footnotesize\ttfamily \label{class_graph_aa64b853e9f916fc07485040fa44fe252} 
+int Graph::\+degree (\begin{DoxyParamCaption}\item[{int}]{u}{, }\item[{const std::\+set$<$ int $>$ \&}]{active}{}\end{DoxyParamCaption}) const}
+
+
+
+Degree of node u considering only nodes in the active set. 
+
+Compute the degree of a node inside an active subgraph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Node whose degree is requested. \\
+\hline
+{\em active} & Set of active nodes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of active neighbors of u. @complexity O(\+A), where A is the size of the active set.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Node whose degree is computed. \\
+\hline
+{\em active} & Set of active nodes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of active neighbors. @complexity O(\+A), where A is the number of active nodes. 
+\end{DoxyReturn}
+\Hypertarget{class_graph_ae69ac4d2194ed9acbe817ac70d89896d}\index{Graph@{Graph}!hasEdge@{hasEdge}}
+\index{hasEdge@{hasEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{hasEdge()}{hasEdge()}}
+{\footnotesize\ttfamily \label{class_graph_ae69ac4d2194ed9acbe817ac70d89896d} 
+bool Graph::\+has\+Edge (\begin{DoxyParamCaption}\item[{int}]{u}{, }\item[{int}]{v}{}\end{DoxyParamCaption}) const}
+
+
+
+Check whether an edge exists. 
+
+Check if an edge exists between two nodes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & First node. \\
+\hline
+{\em v} & Second node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if an edge exists, false otherwise. @complexity O(1).
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em u} & First node. \\
+\hline
+{\em v} & Second node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the edge exists, false otherwise. @complexity O(1). 
+\end{DoxyReturn}
+\Hypertarget{class_graph_a07588a96c3d0d9df83a7fc93b10c86c1}\index{Graph@{Graph}!neighbors@{neighbors}}
+\index{neighbors@{neighbors}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{neighbors()}{neighbors()}}
+{\footnotesize\ttfamily \label{class_graph_a07588a96c3d0d9df83a7fc93b10c86c1} 
+std::\+vector$<$ int $>$ Graph::\+neighbors (\begin{DoxyParamCaption}\item[{int}]{u}{}\end{DoxyParamCaption}) const}
+
+
+
+Full neighbor set of node u. 
+
+Get all neighbors of a node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Node whose neighbors are requested. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector with all neighbors of u. @complexity O(n), where n is the number of graph nodes.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Node whose neighbors are requested. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of neighbor node indices. @complexity O(n), where n is the number of graph nodes. 
+\end{DoxyReturn}
+\Hypertarget{class_graph_a6539d03f6d3f42042196f0f79455bdd8}\index{Graph@{Graph}!size@{size}}
+\index{size@{size}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{class_graph_a6539d03f6d3f42042196f0f79455bdd8} 
+int Graph::\+size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Number of graph nodes. 
+
+\begin{DoxyReturn}{Returns}
+Number of nodes. @complexity O(1). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_graph_8h}{Graph.\+h}}\item 
+\doxymbox{\hyperlink{_graph_8cpp}{Graph.\+cpp}}\end{DoxyCompactItemize}

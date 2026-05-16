@@ -1,0 +1,80 @@
+\doxysection{Parser.\+h File Reference}
+\hypertarget{_parser_8h}{}\label{_parser_8h}\index{Parser.h@{Parser.h}}
+
+
+Parses range and register/\+algorithm input files.  
+
+
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$stdexcept$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_live_range}{Live\+Range}}
+\begin{DoxyCompactList}\small\item\em One live range for a variable. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{struct_range_entry}{Range\+Entry}}
+\begin{DoxyCompactList}\small\item\em A single parsed entry from the ranges file. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{struct_alloc_config}{Alloc\+Config}}
+\begin{DoxyCompactList}\small\item\em Parsed configuration from the registers/\+algorithm file. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_parser}{Parser}}
+\begin{DoxyCompactList}\small\item\em Parses the two input files required by the register allocator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9}{Algorithm\+Type}} \{ \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ae4ac03f6c9f00665644e868dd1fb9f1e}{BASIC}}
+, \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9a081fb39ab31dcddab14b6c19790186b3}{SPILLING}}
+, \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ac7daf351eb03c767f38f7fe9d632c59c}{SPLITTING}}
+, \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9a88c189a42c87aa49d667fc8ab76bc323}{FREE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Algorithm type requested by the config file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parses range and register/\+algorithm input files. 
+
+Handles two input formats:\+
+\begin{DoxyItemize}
+\item Ranges file:\+ "{}varname:\+ p1\+[,p2,...,pn]\+"{} where any point may optionally be marked with \textquotesingle{}+\textquotesingle{} for definition or \textquotesingle{}-\/\textquotesingle{} for last use.
+\item Config file:\+ "{}registers:\+ N"{} /\+ "{}algorithm:\+ type\+[, K]\+"{} 
+\end{DoxyItemize}
+
+\label{_parser_8h_doc-enum-members}
+\Hypertarget{_parser_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_parser_8h_a9243adfb7445f1adcf51b73329e774c9}\index{Parser.h@{Parser.h}!AlgorithmType@{AlgorithmType}}
+\index{AlgorithmType@{AlgorithmType}!Parser.h@{Parser.h}}
+\doxysubsubsection{\texorpdfstring{AlgorithmType}{AlgorithmType}}
+{\footnotesize\ttfamily \label{_parser_8h_a9243adfb7445f1adcf51b73329e774c9} 
+enum class \doxymbox{\hyperlink{_parser_8h_a9243adfb7445f1adcf51b73329e774c9}{Algorithm\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Algorithm type requested by the config file. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BASIC@{BASIC}!Parser.h@{Parser.h}}
+\index{Parser.h@{Parser.h}!BASIC@{BASIC}}
+}\Hypertarget{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ae4ac03f6c9f00665644e868dd1fb9f1e}\label{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ae4ac03f6c9f00665644e868dd1fb9f1e} 
+BASIC&plain graph-\/coloring, no recovery \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPILLING@{SPILLING}!Parser.h@{Parser.h}}
+\index{Parser.h@{Parser.h}!SPILLING@{SPILLING}}
+}\Hypertarget{_parser_8h_a9243adfb7445f1adcf51b73329e774c9a081fb39ab31dcddab14b6c19790186b3}\label{_parser_8h_a9243adfb7445f1adcf51b73329e774c9a081fb39ab31dcddab14b6c19790186b3} 
+SPILLING&spill up to K webs to memory \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPLITTING@{SPLITTING}!Parser.h@{Parser.h}}
+\index{Parser.h@{Parser.h}!SPLITTING@{SPLITTING}}
+}\Hypertarget{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ac7daf351eb03c767f38f7fe9d632c59c}\label{_parser_8h_a9243adfb7445f1adcf51b73329e774c9ac7daf351eb03c767f38f7fe9d632c59c} 
+SPLITTING&split up to K webs \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FREE@{FREE}!Parser.h@{Parser.h}}
+\index{Parser.h@{Parser.h}!FREE@{FREE}}
+}\Hypertarget{_parser_8h_a9243adfb7445f1adcf51b73329e774c9a88c189a42c87aa49d667fc8ab76bc323}\label{_parser_8h_a9243adfb7445f1adcf51b73329e774c9a88c189a42c87aa49d667fc8ab76bc323} 
+FREE&user-\/defined optimized strategy \\
+\hline
+
+\end{DoxyEnumFields}

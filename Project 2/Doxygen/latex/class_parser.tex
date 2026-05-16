@@ -1,0 +1,140 @@
+\doxysection{Parser Class Reference}
+\hypertarget{class_parser}{}\label{class_parser}\index{Parser@{Parser}}
+
+
+Parses the two input files required by the register allocator.  
+
+
+
+
+{\ttfamily \+\#include $<$Parser.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+vector$<$ \doxymbox{\hyperlink{struct_range_entry}{Range\+Entry}} $>$ \doxymbox{\hyperlink{class_parser_a81b51e70d7f8227de9e8f257e6b0b399}{parse\+Ranges}} (const std::\+string \&filename)
+\begin{DoxyCompactList}\small\item\em Parse the live-\/ranges file. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{struct_alloc_config}{Alloc\+Config}} \doxymbox{\hyperlink{class_parser_adf5ad2c402d556280f79045f2dec54c1}{parse\+Config}} (const std::\+string \&filename)
+\begin{DoxyCompactList}\small\item\em Parse the registers/\+algorithm config file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parses the two input files required by the register allocator. 
+
+@complexity Parsing ranges:\+ O(\+L \texorpdfstring{$\ast$}{*} R), where L is the number of lines and R is the average number of tokens per line. Parsing config:\+ O(1). 
+
+\label{class_parser_doc-func-members}
+\Hypertarget{class_parser_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_parser_adf5ad2c402d556280f79045f2dec54c1}\index{Parser@{Parser}!parseConfig@{parseConfig}}
+\index{parseConfig@{parseConfig}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{parseConfig()}{parseConfig()}}
+{\footnotesize\ttfamily \label{class_parser_adf5ad2c402d556280f79045f2dec54c1} 
+\doxymbox{\hyperlink{struct_alloc_config}{Alloc\+Config}} Parser::\+parse\+Config (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse the registers/\+algorithm config file. 
+
+Parse the register and algorithm configuration file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the config file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Populated \doxylink{struct_alloc_config}{Alloc\+Config} struct. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+runtime\+\_\+error} & on malformed input or missing fields. @complexity O(1), since the file has a fixed number of expected fields.\\
+\hline
+\end{DoxyExceptions}
+Expected fields:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{registers:\ N}
+\DoxyCodeLine{algorithm:\ basic}
+\DoxyCodeLine{algorithm:\ spilling,\ K}
+\DoxyCodeLine{algorithm:\ splitting,\ K}
+\DoxyCodeLine{algorithm:\ free}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the config file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Parsed allocation configuration. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+runtime\+\_\+error} & on malformed input or missing fields. @complexity O(1), since the file contains a fixed number of relevant fields. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_parser_a81b51e70d7f8227de9e8f257e6b0b399}\index{Parser@{Parser}!parseRanges@{parseRanges}}
+\index{parseRanges@{parseRanges}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{parseRanges()}{parseRanges()}}
+{\footnotesize\ttfamily \label{class_parser_a81b51e70d7f8227de9e8f257e6b0b399} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_range_entry}{Range\+Entry}} $>$ Parser::\+parse\+Ranges (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse the live-\/ranges file. 
+
+Parse the live-\/ranges input file.
+
+Lines beginning with \textquotesingle{}\#\textquotesingle{} or empty lines are ignored.
+
+Format per line:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{varname:\ token1,token2,...,tokenN}
+
+\end{DoxyCode}
+
+
+Each token is a program line number, optionally followed by:\+
+\begin{DoxyItemize}
+\item \textquotesingle{}+\textquotesingle{} meaning definition/\+start of a value;
+\item \textquotesingle{}-\/\textquotesingle{} meaning last use/\+end of a value.
+\end{DoxyItemize}
+
+A line may have no markers, one marker, or both markers. Multiple \textquotesingle{}+\textquotesingle{} markers or multiple \textquotesingle{}-\/\textquotesingle{} markers in the same range are rejected.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the ranges file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of \doxylink{struct_range_entry}{Range\+Entry}, one per non-\/comment line. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+runtime\+\_\+error} & on malformed input. @complexity O(\+L \texorpdfstring{$\ast$}{*} T), where L is the number of lines and T is the average number of tokens per line.\\
+\hline
+\end{DoxyExceptions}
+This parser accepts the full format described in the project statement. In particular, a live range is not required to contain both a \textquotesingle{}+\textquotesingle{} and a \textquotesingle{}-\/\textquotesingle{} marker. Some ranges may contain only plain line numbers because they describe intersection points between live ranges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the ranges file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of parsed range entries. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+runtime\+\_\+error} & on malformed input. @complexity O(\+L \texorpdfstring{$\ast$}{*} T), where L is the number of input lines and T is the average number of tokens per live range. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_parser_8h}{Parser.\+h}}\item 
+\doxymbox{\hyperlink{_parser_8cpp}{Parser.\+cpp}}\end{DoxyCompactItemize}

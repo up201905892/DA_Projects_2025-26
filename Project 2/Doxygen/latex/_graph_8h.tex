@@ -1,0 +1,109 @@
+\doxysection{Graph.\+h File Reference}
+\hypertarget{_graph_8h}{}\label{_graph_8h}\index{Graph.h@{Graph.h}}
+
+
+Interference graph and web construction for register allocation.  
+
+
+{\ttfamily \+\#include "{}Parser.\+h"{}}\newline
+{\ttfamily \+\#include $<$set$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$unordered\+\_\+map$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_web}{Web}}
+\begin{DoxyCompactList}\small\item\em A live web — the union of all overlapping live ranges for one variable. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_graph}{Graph}}
+\begin{DoxyCompactList}\small\item\em Undirected interference graph stored as an adjacency matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_web}{Web}} $>$ \doxymbox{\hyperlink{_graph_8h_a0205f33849f43765fd3a691fb20a4a3f}{build\+Webs}} (const std::\+vector$<$ \doxymbox{\hyperlink{struct_range_entry}{Range\+Entry}} $>$ \&entries)
+\begin{DoxyCompactList}\small\item\em Build webs from parsed range entries. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_graph}{Graph}} \doxymbox{\hyperlink{_graph_8h_a5718a26d9f76e74aa33305016ab5bc48}{build\+Interference\+Graph}} (const std::\+vector$<$ \doxymbox{\hyperlink{struct_web}{Web}} $>$ \&webs)
+\begin{DoxyCompactList}\small\item\em Build the interference graph from a web list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interference graph and web construction for register allocation. 
+
+Webs are built by merging overlapping live ranges of the same variable. The interference graph has one node per web; edges connect webs whose live ranges overlap at a program point where both values are simultaneously alive. 
+
+\label{_graph_8h_doc-func-members}
+\Hypertarget{_graph_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_graph_8h_a5718a26d9f76e74aa33305016ab5bc48}\index{Graph.h@{Graph.h}!buildInterferenceGraph@{buildInterferenceGraph}}
+\index{buildInterferenceGraph@{buildInterferenceGraph}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{buildInterferenceGraph()}{buildInterferenceGraph()}}
+{\footnotesize\ttfamily \label{_graph_8h_a5718a26d9f76e74aa33305016ab5bc48} 
+\doxymbox{\hyperlink{class_graph}{Graph}} build\+Interference\+Graph (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{struct_web}{Web}} $>$ \&}]{webs}{}\end{DoxyParamCaption})}
+
+
+
+Build the interference graph from a web list. 
+
+Build an interference graph from the computed webs.
+
+Two webs interfere if they are simultaneously alive at some program point. If two webs only touch at a point where one explicitly ends with \textquotesingle{}-\/\textquotesingle{} and the other explicitly starts with \textquotesingle{}+\textquotesingle{}, that point does not create interference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em webs} & Vector of webs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Interference graph. @complexity O(\+W\texorpdfstring{$^\wedge$}{\string^}2 \texorpdfstring{$\ast$}{*} L \texorpdfstring{$\ast$}{*} R), where W is the number of webs, L is the average number of live points per web and R is the average number of ranges per web.
+\end{DoxyReturn}
+Build the interference graph from a web list.
+
+An edge is added when two webs are alive at the same program point, except when the shared point is only a boundary where one web ends with \textquotesingle{}-\/\textquotesingle{} and the other starts with \textquotesingle{}+\textquotesingle{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em webs} & Vector of webs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Interference graph. @complexity O(\+W\texorpdfstring{$^\wedge$}{\string^}2 \texorpdfstring{$\ast$}{*} L \texorpdfstring{$\ast$}{*} R), where W is the number of webs, L is the average number of points per web and R is the average number of ranges per web. 
+\end{DoxyReturn}
+\Hypertarget{_graph_8h_a0205f33849f43765fd3a691fb20a4a3f}\index{Graph.h@{Graph.h}!buildWebs@{buildWebs}}
+\index{buildWebs@{buildWebs}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{buildWebs()}{buildWebs()}}
+{\footnotesize\ttfamily \label{_graph_8h_a0205f33849f43765fd3a691fb20a4a3f} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_web}{Web}} $>$ build\+Webs (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{struct_range_entry}{Range\+Entry}} $>$ \&}]{entries}{}\end{DoxyParamCaption})}
+
+
+
+Build webs from parsed range entries. 
+
+Build live webs by merging overlapping ranges of the same variable.
+
+Algorithm:\+
+\begin{DoxyEnumerate}
+\item Group live ranges by variable name.
+\item For each variable, repeatedly merge groups of ranges that share at least one program point.
+\item Each remaining group becomes one web.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entries} & Raw parsed range entries. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of webs with IDs assigned from 0 to W-\/1. @complexity O(\+E\texorpdfstring{$^\wedge$}{\string^}2 \texorpdfstring{$\ast$}{*} L), where E is the number of range entries and L is the average number of points per range.
+\end{DoxyReturn}
+Build webs from parsed range entries.
+
+Ranges are first grouped by variable name. Inside each variable group, any two range groups that share a program point are merged. This process repeats until no more groups can be merged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entries} & Parsed range entries. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of constructed webs. @complexity O(\+E\texorpdfstring{$^\wedge$}{\string^}2 \texorpdfstring{$\ast$}{*} L), where E is the number of range entries and L is the average number of points per range. 
+\end{DoxyReturn}

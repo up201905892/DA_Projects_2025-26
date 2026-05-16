@@ -1,0 +1,65 @@
+\doxysection{Split\+Record Struct Reference}
+\hypertarget{struct_split_record}{}\label{struct_split_record}\index{SplitRecord@{SplitRecord}}
+
+
+Metadata describing one web split operation.  
+
+
+
+
+{\ttfamily \+\#include $<$Allocator.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{struct_split_record_a1c760fb038fa32cd447a85332527815c}{original\+Web\+Id}} = -\/1
+\begin{DoxyCompactList}\small\item\em id of the web selected for splitting \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{struct_split_record_a03b31708645ee37e903bde51b89305f1}{first\+New\+Web\+Id}} = -\/1
+\begin{DoxyCompactList}\small\item\em id of the first derived web \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{struct_split_record_a6029313232b63bf500cd5827bf7fdc2e}{second\+New\+Web\+Id}} = -\/1
+\begin{DoxyCompactList}\small\item\em id of the second derived web \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Metadata describing one web split operation. 
+
+This structure is used only by the SPLITTING algorithm. It records which web was selected for splitting and which two derived webs were created. 
+
+\label{struct_split_record_doc-variable-members}
+\Hypertarget{struct_split_record_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_split_record_a03b31708645ee37e903bde51b89305f1}\index{SplitRecord@{SplitRecord}!firstNewWebId@{firstNewWebId}}
+\index{firstNewWebId@{firstNewWebId}!SplitRecord@{SplitRecord}}
+\doxysubsubsection{\texorpdfstring{firstNewWebId}{firstNewWebId}}
+{\footnotesize\ttfamily \label{struct_split_record_a03b31708645ee37e903bde51b89305f1} 
+int Split\+Record::\+first\+New\+Web\+Id = -\/1}
+
+
+
+id of the first derived web 
+
+\Hypertarget{struct_split_record_a1c760fb038fa32cd447a85332527815c}\index{SplitRecord@{SplitRecord}!originalWebId@{originalWebId}}
+\index{originalWebId@{originalWebId}!SplitRecord@{SplitRecord}}
+\doxysubsubsection{\texorpdfstring{originalWebId}{originalWebId}}
+{\footnotesize\ttfamily \label{struct_split_record_a1c760fb038fa32cd447a85332527815c} 
+int Split\+Record::\+original\+Web\+Id = -\/1}
+
+
+
+id of the web selected for splitting 
+
+\Hypertarget{struct_split_record_a6029313232b63bf500cd5827bf7fdc2e}\index{SplitRecord@{SplitRecord}!secondNewWebId@{secondNewWebId}}
+\index{secondNewWebId@{secondNewWebId}!SplitRecord@{SplitRecord}}
+\doxysubsubsection{\texorpdfstring{secondNewWebId}{secondNewWebId}}
+{\footnotesize\ttfamily \label{struct_split_record_a6029313232b63bf500cd5827bf7fdc2e} 
+int Split\+Record::\+second\+New\+Web\+Id = -\/1}
+
+
+
+id of the second derived web 
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_allocator_8h}{Allocator.\+h}}\end{DoxyCompactItemize}

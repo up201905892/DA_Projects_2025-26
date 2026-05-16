@@ -1,0 +1,13 @@
+webs: 3
+web0: 1+,2,3,4,5,6-
+web1: 9+,10,11,12-,12+,13,14-,11,12-,20+
+web2: 7+,8,9,10-
+registers: 1
+r0: web0
+r0: web2
+M: web1
+# algorithm metadata
+algorithm: spilling
+spill_budget: 1
+spilled_webs: 1
+spilled: web1

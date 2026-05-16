@@ -1,0 +1,76 @@
+\doxysection{Allocator Class Reference}
+\hypertarget{class_allocator}{}\label{class_allocator}\index{Allocator@{Allocator}}
+
+
+Orchestrates register allocation.  
+
+
+
+
+{\ttfamily \+\#include $<$Allocator.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_allocation_result}{Allocation\+Result}} \doxymbox{\hyperlink{class_allocator_a5c077bbff8aa1fd9bd4cc4ddc35c80b7}{allocate}} (std::\+vector$<$ \doxymbox{\hyperlink{struct_web}{Web}} $>$ \&webs, \doxymbox{\hyperlink{class_graph}{Graph}} \&graph, const \doxymbox{\hyperlink{struct_alloc_config}{Alloc\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Top-\/level entry point:\+ dispatches to the selected algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Orchestrates register allocation. 
+
+Typical usage:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Allocator\ alloc;}
+\DoxyCodeLine{AllocationResult\ r\ =\ alloc.\doxymbox{\hyperlink{class_allocator_a5c077bbff8aa1fd9bd4cc4ddc35c80b7}{allocate}}(webs,\ graph,\ config);}
+
+\end{DoxyCode}
+ 
+
+\label{class_allocator_doc-func-members}
+\Hypertarget{class_allocator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_allocator_a5c077bbff8aa1fd9bd4cc4ddc35c80b7}\index{Allocator@{Allocator}!allocate@{allocate}}
+\index{allocate@{allocate}!Allocator@{Allocator}}
+\doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
+{\footnotesize\ttfamily \label{class_allocator_a5c077bbff8aa1fd9bd4cc4ddc35c80b7} 
+\doxymbox{\hyperlink{struct_allocation_result}{Allocation\+Result}} Allocator::\+allocate (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{struct_web}{Web}} $>$ \&}]{webs}{, }\item[{\doxymbox{\hyperlink{class_graph}{Graph}} \&}]{graph}{, }\item[{const \doxymbox{\hyperlink{struct_alloc_config}{Alloc\+Config}} \&}]{config}{}\end{DoxyParamCaption})}
+
+
+
+Top-\/level entry point:\+ dispatches to the selected algorithm. 
+
+Dispatch allocation to the algorithm selected in the configuration.
+
+
+\begin{DoxyParams}{Parameters}
+{\em webs} & Webs to allocate. May be mutated for SPLITTING. \\
+\hline
+{\em graph} & Interference graph. May be mutated for SPLITTING. \\
+\hline
+{\em config} & Algorithm configuration. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocation result.
+\end{DoxyReturn}
+@complexity Depends on the selected algorithm.
+
+
+\begin{DoxyParams}{Parameters}
+{\em webs} & Vector of webs. \\
+\hline
+{\em graph} & Interference graph. \\
+\hline
+{\em config} & Allocation configuration. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocation result.
+\end{DoxyReturn}
+@complexity Depends on the selected allocation algorithm. 
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_allocator_8h}{Allocator.\+h}}\item 
+\doxymbox{\hyperlink{_allocator_8cpp}{Allocator.\+cpp}}\end{DoxyCompactItemize}

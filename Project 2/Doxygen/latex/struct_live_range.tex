@@ -1,0 +1,91 @@
+\doxysection{Live\+Range Struct Reference}
+\hypertarget{struct_live_range}{}\label{struct_live_range}\index{LiveRange@{LiveRange}}
+
+
+One live range for a variable.  
+
+
+
+
+{\ttfamily \+\#include $<$Parser.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{struct_live_range_a17d98a53ee8886e5006903bdbb6ca51e}{start}} = -\/1
+\begin{DoxyCompactList}\small\item\em first program point in this range \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{struct_live_range_a1b20bc0723e2f31020def3b7a98a8214}{end}} = -\/1
+\begin{DoxyCompactList}\small\item\em last program point in this range \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{struct_live_range_a2cb3b7495ecac01b0683ea179f0d9e28}{has\+Start\+Marker}} = false
+\begin{DoxyCompactList}\small\item\em true if a \textquotesingle{}+\textquotesingle{} marker exists in this range \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{struct_live_range_aca120cd556ae09315d4c85ed70eca090}{has\+End\+Marker}} = false
+\begin{DoxyCompactList}\small\item\em true if a \textquotesingle{}-\/\textquotesingle{} marker exists in this range \end{DoxyCompactList}\item 
+std::\+vector$<$ int $>$ \doxymbox{\hyperlink{struct_live_range_a3f3d8ef259b98cb711d36f29b920da7b}{intermediate}}
+\begin{DoxyCompactList}\small\item\em remaining program points between start and end \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+One live range for a variable. 
+
+A live range is represented as a set/\+list of program points. According to the project statement, not every live range line must contain a \textquotesingle{}+\textquotesingle{} or \textquotesingle{}-\/\textquotesingle{} marker:\+ ranges that exist only because of intersections may contain plain program points only.
+
+The fields start and end store the first and last program points in the input line, respectively. The boolean flags indicate whether those points were explicitly marked as a definition \textquotesingle{}+\textquotesingle{} or last use \textquotesingle{}-\/\textquotesingle{}. 
+
+\label{struct_live_range_doc-variable-members}
+\Hypertarget{struct_live_range_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_live_range_a1b20bc0723e2f31020def3b7a98a8214}\index{LiveRange@{LiveRange}!end@{end}}
+\index{end@{end}!LiveRange@{LiveRange}}
+\doxysubsubsection{\texorpdfstring{end}{end}}
+{\footnotesize\ttfamily \label{struct_live_range_a1b20bc0723e2f31020def3b7a98a8214} 
+int Live\+Range::\+end = -\/1}
+
+
+
+last program point in this range 
+
+\Hypertarget{struct_live_range_aca120cd556ae09315d4c85ed70eca090}\index{LiveRange@{LiveRange}!hasEndMarker@{hasEndMarker}}
+\index{hasEndMarker@{hasEndMarker}!LiveRange@{LiveRange}}
+\doxysubsubsection{\texorpdfstring{hasEndMarker}{hasEndMarker}}
+{\footnotesize\ttfamily \label{struct_live_range_aca120cd556ae09315d4c85ed70eca090} 
+bool Live\+Range::\+has\+End\+Marker = false}
+
+
+
+true if a \textquotesingle{}-\/\textquotesingle{} marker exists in this range 
+
+\Hypertarget{struct_live_range_a2cb3b7495ecac01b0683ea179f0d9e28}\index{LiveRange@{LiveRange}!hasStartMarker@{hasStartMarker}}
+\index{hasStartMarker@{hasStartMarker}!LiveRange@{LiveRange}}
+\doxysubsubsection{\texorpdfstring{hasStartMarker}{hasStartMarker}}
+{\footnotesize\ttfamily \label{struct_live_range_a2cb3b7495ecac01b0683ea179f0d9e28} 
+bool Live\+Range::\+has\+Start\+Marker = false}
+
+
+
+true if a \textquotesingle{}+\textquotesingle{} marker exists in this range 
+
+\Hypertarget{struct_live_range_a3f3d8ef259b98cb711d36f29b920da7b}\index{LiveRange@{LiveRange}!intermediate@{intermediate}}
+\index{intermediate@{intermediate}!LiveRange@{LiveRange}}
+\doxysubsubsection{\texorpdfstring{intermediate}{intermediate}}
+{\footnotesize\ttfamily \label{struct_live_range_a3f3d8ef259b98cb711d36f29b920da7b} 
+std::\+vector$<$int$>$ Live\+Range::\+intermediate}
+
+
+
+remaining program points between start and end 
+
+\Hypertarget{struct_live_range_a17d98a53ee8886e5006903bdbb6ca51e}\index{LiveRange@{LiveRange}!start@{start}}
+\index{start@{start}!LiveRange@{LiveRange}}
+\doxysubsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily \label{struct_live_range_a17d98a53ee8886e5006903bdbb6ca51e} 
+int Live\+Range::\+start = -\/1}
+
+
+
+first program point in this range 
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_parser_8h}{Parser.\+h}}\end{DoxyCompactItemize}

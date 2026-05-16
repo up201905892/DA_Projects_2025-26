@@ -1,0 +1,71 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Entry point for the Compiler Register Allocation Tool.  
+
+
+{\ttfamily \+\#include "{}Parser.\+h"{}}\newline
+{\ttfamily \+\#include "{}Graph.\+h"{}}\newline
+{\ttfamily \+\#include "{}Allocator.\+h"{}}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$cstdlib$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\+[$\,$]\+)
+\begin{DoxyCompactList}\small\item\em Program entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entry point for the Compiler Register Allocation Tool. 
+
+Supports two execution modes:\+
+\begin{DoxyItemize}
+\item Batch mode:\+ my\+Prog -\/b ranges.\+txt registers.\+txt allocation.\+txt
+\item Interactive mode:\+ my\+Prog (launches menu-\/driven UI)
+\end{DoxyItemize}
+
+Error messages are written to stderr; all other output to stdout or file. 
+
+\label{main_8cpp_doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+
+
+Program entry point. 
+
+Batch usage:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{myProg\ -\/b\ ranges.txt\ registers.txt\ allocation.txt}
+
+\end{DoxyCode}
+
+
+Interactive usage:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{myProg}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command-\/line arguments. \\
+\hline
+{\em argv} & Command-\/line argument values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS on success, EXIT\+\_\+\+FAILURE on incorrect usage or fatal error.
+\end{DoxyReturn}
+@complexity Depends on selected execution mode. 

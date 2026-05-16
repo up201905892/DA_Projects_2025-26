@@ -1,0 +1,15 @@
+webs: 4
+web0: 1+,2,3,4,5,6-
+web1: 7+,8,9,10-
+web2: 9,10,11
+web3: 12,13,14,20
+registers: 0
+M: web0
+M: web1
+M: web2
+M: web3
+# algorithm metadata
+algorithm: splitting
+split_budget: 1
+splits: 1
+split: web1 -> web2,web3
